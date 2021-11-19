@@ -46,7 +46,7 @@ public class TelaDeCarregamento extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Aguarde enquanto preparamos o seu tabuleiro");
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(38, 344, 387, 47);
+		lblNewLabel_1.setBounds(48, 336, 387, 47);
 		contentPane.add(lblNewLabel_1);
 	
 	}

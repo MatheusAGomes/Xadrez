@@ -2,8 +2,21 @@ package Model;
 
 public class Bispo extends Peca{
 
-	public Bispo(String imagem, int linha, int coluna,String cor) {
-			super( imagem,  linha,  coluna, cor);
+	String imagem;
+	
+	public Bispo(int linha, int coluna,String cor) {
+			super(linha,  coluna, cor);
+			if(cor.equals("Black"))
+			{
+			this.imagem = "B(Preta)";
+			}
+			else
+			{
+			this.imagem = "B(Branca)";
+			}
+	}
+	public String getImagem() {
+		return imagem;
 	}
 
 }

@@ -1,43 +1,27 @@
 package Model;
 
+import javax.swing.ImageIcon;
+
 public abstract class Peca {
 	
 	private String cor;
 	private String imagem;
-	private Boolean estado = false;
+	private Boolean eliminado = false;
 	private Boolean selecionada =  false;
 	private int linha;
 	private int coluna;
 
-	public Peca(String imagem, int linha, int coluna,String cor) {
-		this.imagem = imagem;
+	public Peca(int linha, int coluna,String cor) {
 		this.linha = linha;
 		this.coluna = coluna;
 		this.cor = cor;
+				
 	}
 
-	private String getCor() {
-		return cor;
-	}
 
-	private void setCor(String cor) {
-		this.cor = cor;
-	}
 
-	private String getImagem() {
+	public String getImagem() {
 		return imagem;
-	}
-
-	private void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-
-	private Boolean getEstado() {
-		return estado;
-	}
-
-	private void setEstado(Boolean estado) {
-		this.estado = estado;
 	}
 
 	private Boolean getSelecionada() {
@@ -48,7 +32,7 @@ public abstract class Peca {
 		this.selecionada = selecionada;
 	}
 
-	private int getLinha() {
+	public int getLinha() {
 		return linha;
 	}
 
@@ -56,12 +40,20 @@ public abstract class Peca {
 		this.linha = linha;
 	}
 
-	private int getColuna() {
+	public int getColuna() {
 		return coluna;
 	}
 
 	private void setColuna(int coluna) {
 		this.coluna = coluna;
+	}
+
+	public Boolean getEliminado() {
+		return eliminado;
+	}
+
+	public void setEliminado(Boolean eliminado) {
+		this.eliminado = eliminado;
 	}
 	
 

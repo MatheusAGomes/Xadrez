@@ -35,35 +35,9 @@ public class TelaDeInicio extends JFrame {
 				nome[0] = JOptionPane.showInputDialog("<DIGITE O NOME DO PRIMEIRO JOGADOR>");
 				nome[1] = JOptionPane.showInputDialog("<DIGITE O NOME DO SEGUNDO JOGADOR>");
 				setVisible(false);
-				TelaDeCarregamento teladecarregamento = new TelaDeCarregamento();
-				teladecarregamento.setVisible(true);
+				Tabuleiro tab = new Tabuleiro(nome[0],nome[1]);
+				tab.setVisible(true);
 				
-				Thread t =new Thread(){
-					
-					@Override
-					public void run() {
-						
-						for (int i = 0 ; i<=100;i++) {
-							try {
-								sleep(50);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							if(i==100)
-							{
-								teladecarregamento.setVisible(false);
-								Tabuleiro tab = new Tabuleiro(nome[0],nome[1]);
-								tab.setVisible(true);
-							}
-							
-						}
-						
-						
-					}
-					
-				};
-				t.start();
 				
 				
 			}

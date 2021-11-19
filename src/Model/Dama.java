@@ -2,8 +2,21 @@ package Model;
 
 public class Dama extends Peca{
 
-	public Dama(String imagem, int linha, int coluna,String cor) {
-			super( imagem,  linha,  coluna, cor);
+		String imagem;
+	
+	public Dama( int linha, int coluna,String cor) {
+			super(linha,  coluna, cor);
+			if(cor.equals("Black"))
+			{
+			this.imagem = "D(Preta)";
+			}
+			else
+			{
+			this.imagem = "D(Branca)";
+			}
+	}
+	public String getImagem() {
+		return imagem;
 	}
 
 }
