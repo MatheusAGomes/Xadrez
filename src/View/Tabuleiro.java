@@ -96,18 +96,36 @@ public class Tabuleiro extends JFrame {
 			  for ( j=0; j<8; j++ )
 			  {
 				  
-				  if((j % 2) == 0) {
-					System.out.print(j);
-				  quadrado[i][j] = new Quadrado(Color.WHITE,50,50);
-				  panel.add(quadrado[i][j]);
-				  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
-				  
+				  if((i % 2) == 0) {
+					  if(j%2 == 0) {
+					  System.out.print(j);
+					  quadrado[i][j] = new Quadrado(Color.WHITE,50,50);
+					  panel.add(quadrado[i][j]);
+					  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
+					  }
+					  else {
+						  
+						  quadrado[i][j] = new Quadrado(Color.BLACK,50,50);
+						  panel.add(quadrado[i][j]);
+						  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
+						  
+					  }
 				  }
 				  else
 				  {
-					  quadrado[i][j] = new Quadrado(Color.BLACK,50,50);
-					  panel.add(quadrado[i][j]);
-					  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
+					  if(j%2 == 1) {
+						  System.out.print(j);
+						  quadrado[i][j] = new Quadrado(Color.WHITE,50,50);
+						  panel.add(quadrado[i][j]);
+						  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
+						  }
+						  else {
+							  
+							  quadrado[i][j] = new Quadrado(Color.BLACK,50,50);
+							  panel.add(quadrado[i][j]);
+							  quadrado[i][j].setBounds(j*50,i*50,quadrado[i][j].getLargura(),quadrado[i][j].getAltura());
+							  
+						  }
 				  }
 			  }
 		}
