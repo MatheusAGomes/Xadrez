@@ -1,5 +1,7 @@
 package Model;
 
+import View.TabuleiroVisualizacao;
+
 public class Dama extends Peca{
 
 		String imagem;
@@ -18,6 +20,12 @@ public class Dama extends Peca{
 	}
 	public String getImagem() {
 		return imagem;
+	}
+	
+	@Override
+	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -7,7 +7,7 @@ import javax.swing.border.BevelBorder;
 public class Tabuleiro {
 	
 	private Peca[][] peca;
-	private Peca selecionada = null;
+	public Peca selecionada = null;
 	public Boolean vezdobranco = true;
 	
 	public Tabuleiro()
@@ -79,7 +79,7 @@ public class Tabuleiro {
 		Dama DamaP = new Dama(0,3,false);this.addnotab(DamaP);
 		//Rei
 		Rei ReiB = new Rei(7,4,true);this.addnotab(ReiB);
-		Rei ReiP = new Rei(0,4,true);this.addnotab(ReiP);
+		Rei ReiP = new Rei(0,4,false);this.addnotab(ReiP);
 		
 		
 	}
@@ -112,22 +112,27 @@ public class Tabuleiro {
 		
 		Peca peca = this.getPeca(linha, coluna); 
 		if(this.selecionada == null) {
+			//caso nao exista nenhuma peca selecionada
 		if(peca.branco == true && vezdobranco == true && peca!= null) {
+			//seleciona
 			this.selecionada = peca;
 			peca.setOpostoofselecionada();
 			
 		}
 		}else
 			{
+			// caso ja exista peca selecionada e a posicao que estao selecionando seja a da peca selecionada
 			if(this.selecionada == peca) {
+				//entao retira a selecao da peca
 			this.selecionada.selecionada = false;
 			this.selecionada = null;
 		
 			
 			}
 			else {
-				if(peca == null || !peca.branco.equals(this.selecionada.branco)  )
+				if(peca == null || !peca.branco.equals(this.selecionada.branco))
 				{
+					//caso haja uma peca selecionada e o click é em uma posicao sem peca ou peca adversaria ocorre o movimento(retira a peca da casa e coloca em outra)
 					System.out.print("a");
 					int antigalinha = this.selecionada.linha;
 					int antigaColuna = this.selecionada.coluna;

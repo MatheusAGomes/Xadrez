@@ -7,7 +7,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public abstract class Peca extends JButton{
+import View.TabuleiroVisualizacao;
+
+public abstract class Peca {
 	
 	public int id;
 	public Boolean branco;
@@ -15,14 +17,10 @@ public abstract class Peca extends JButton{
 	public Boolean eliminado;
 	public Boolean selecionada; 
 	public int linha;
-	public int coluna;
-	public Tabuleiro tab;
-
-
 	
-
-
-
+	public int coluna;
+	
+	public Tabuleiro tab;
 	
 	public Peca(int linha, int coluna,Boolean branco) {
 		this.linha = linha;
@@ -85,6 +83,7 @@ public abstract class Peca extends JButton{
 		
 		
 	}
+	public abstract Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
 	
 
 }
