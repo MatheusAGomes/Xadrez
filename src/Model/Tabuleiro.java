@@ -111,18 +111,42 @@ public class Tabuleiro {
 	public void jogar(int linha, int coluna) {
 		
 		Peca peca = this.getPeca(linha, coluna); 
-		if(selecionada == null) {
+		if(this.selecionada == null) {
 		if(peca.branco == true && vezdobranco == true && peca!= null) {
 			this.selecionada = peca;
 			peca.setOpostoofselecionada();
-			System.out.print("\n");
+			
 		}
 		}else
 			{
+			if(this.selecionada == peca) {
 			this.selecionada.selecionada = false;
-			this.selecionada = peca;
-			peca.selecionada = true;
+			this.selecionada = null;
+		
+			
 			}
+			else {
+				if(peca == null || !peca.branco.equals(this.selecionada.branco)  )
+				{
+					System.out.print("a");
+					int antigalinha = this.selecionada.linha;
+					int antigaColuna = this.selecionada.coluna;
+					this.selecionada.mover(linha, coluna);
+					this.addnotab(this.selecionada);
+					this.peca[antigalinha][antigaColuna] = null;
+					this.selecionada.selecionada = false;
+					this.selecionada = null;
+					
+					
+				}
+				
+				}
+			}
+		
+	}
+
+	private void mover(Peca selecionada2, int linha, int coluna) {
+		selecionada2.mover(linha, coluna);
 		
 	}
 

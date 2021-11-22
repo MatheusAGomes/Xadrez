@@ -31,6 +31,11 @@ public abstract class Peca extends JButton{
 		this.selecionada = false;
 					
 	}
+	public void mover(int linha, int coluna) {
+		
+		this.linha = linha;
+		this.coluna = coluna;
+	}
 	
 	public Tabuleiro getTab() {
 		return tab;

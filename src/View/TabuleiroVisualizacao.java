@@ -78,9 +78,9 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		Quadrado quadrado = (Quadrado) e.getSource();
-		System.out.print(quadrado.getPeca().getPeca().selecionada);
 		this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
 		this.criarTab();
+		
 		
 		
 	}
