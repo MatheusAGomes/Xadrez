@@ -37,6 +37,7 @@ public class Jogo extends JFrame {
 	public Jogo(String Player1, String Player2) {
 		
 		TabuleiroVisualizacao tab =new TabuleiroVisualizacao(new Tabuleiro());
+		
 		getContentPane().add(tab);
 		tab.setBounds(74, 35, 400, 400);
 		
@@ -111,8 +112,7 @@ public class Jogo extends JFrame {
 		{
 			lblVezDe.setText("Preto");
 		}
-		this.revalidate();
-		this.repaint();		
+				
 		
 		
 	}

@@ -111,11 +111,18 @@ public class Tabuleiro {
 	public void jogar(int linha, int coluna) {
 		
 		Peca peca = this.getPeca(linha, coluna); 
-		
-		if(peca != null)
-		{
+		if(selecionada == null) {
+		if(peca.branco == true && vezdobranco == true && peca!= null) {
 			this.selecionada = peca;
+			peca.setOpostoofselecionada();
+			System.out.print("\n");
 		}
+		}else
+			{
+			this.selecionada.selecionada = false;
+			this.selecionada = peca;
+			peca.selecionada = true;
+			}
 		
 	}
 
