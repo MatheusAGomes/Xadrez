@@ -4,9 +4,9 @@ public class Dama extends Peca{
 
 		String imagem;
 	
-	public Dama( int linha, int coluna,String cor) {
+	public Dama( int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor.equals("Black"))
+			if(cor = false)
 			{
 			this.imagem = "D(Preta)";
 			}
@@ -14,6 +14,7 @@ public class Dama extends Peca{
 			{
 			this.imagem = "D(Branca)";
 			}
+			this.id = 4;
 	}
 	public String getImagem() {
 		return imagem;

@@ -35,8 +35,8 @@ public class TelaDeInicio extends JFrame {
 				nome[0] = JOptionPane.showInputDialog("<DIGITE O NOME DO PRIMEIRO JOGADOR>");
 				nome[1] = JOptionPane.showInputDialog("<DIGITE O NOME DO SEGUNDO JOGADOR>");
 				setVisible(false);
-				Tabuleiro tab = new Tabuleiro(nome[0],nome[1]);
-				tab.setVisible(true);
+				Jogo jogo = new Jogo(nome[0],nome[1]);
+				jogo.setVisible(true);
 				
 				
 				

@@ -3,9 +3,9 @@ package Model;
 public class Peao extends Peca{
 	String imagem;
 
-	public Peao(int linha, int coluna,String cor) {
+	public Peao(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor.equals("Black"))
+			if(cor = false)
 			{
 			this.imagem = "P(Preta)";
 			}
@@ -13,12 +13,14 @@ public class Peao extends Peca{
 			{
 			this.imagem = "P(Branca)";
 			}
+			this.id = 1;
 			
 	}
-	
-	
+
 
 	public String getImagem() {
 		return imagem;
 	}
+	
+	
 }

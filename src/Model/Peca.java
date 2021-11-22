@@ -1,36 +1,50 @@
 package Model;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public abstract class Peca {
+public abstract class Peca extends JButton{
 	
-	private String cor;
-	private String imagem;
-	private Boolean eliminado = false;
-	private Boolean selecionada =  false;
-	private int linha;
-	private int coluna;
+	public int id;
+	public Boolean branco;
+	public String imagem;
+	public Boolean eliminado;
+	public Boolean selecionada; 
+	public int linha;
+	public int coluna;
+	public Tabuleiro tab;
 
-	public Peca(int linha, int coluna,String cor) {
+
+	
+
+
+
+	
+	public Peca(int linha, int coluna,Boolean branco) {
 		this.linha = linha;
 		this.coluna = coluna;
-		this.cor = cor;
-				
+		this.branco = branco;
+		this.selecionada = false;
+					
+	}
+	
+	public Tabuleiro getTab() {
+		return tab;
 	}
 
+	public void setTab(Tabuleiro tab) {
+		this.tab = tab;
+	}
 
 
 	public String getImagem() {
 		return imagem;
 	}
 
-	private Boolean getSelecionada() {
-		return selecionada;
-	}
-
-	private void setSelecionada(Boolean selecionada) {
-		this.selecionada = selecionada;
-	}
 
 	public int getLinha() {
 		return linha;
@@ -54,6 +68,17 @@ public abstract class Peca {
 
 	public void setEliminado(Boolean eliminado) {
 		this.eliminado = eliminado;
+	}
+	
+	public void setOpostoofselecionada(){
+		if(this.selecionada == true) {
+		this.selecionada = false;}
+		else
+		{
+			this.selecionada = true; 
+		}
+		
+		
 	}
 	
 

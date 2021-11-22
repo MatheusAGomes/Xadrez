@@ -3,9 +3,9 @@ package Model;
 public class Torre extends Peca{
 	String imagem;
 
-	public Torre(int linha, int coluna,String cor) {
+	public Torre(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor.equals("Black"))
+			if(cor = false)
 			{
 			this.imagem = "Torre(Preta)";
 			}
@@ -13,6 +13,7 @@ public class Torre extends Peca{
 			{
 			this.imagem = "Torre(Branca)";
 			}
+			this.id = 2;
 	}
 	public String getImagem() {
 		return imagem;

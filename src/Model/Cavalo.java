@@ -4,9 +4,10 @@ public class Cavalo extends Peca{
 	
 	String imagem;
 
-	public Cavalo(int linha, int coluna,String cor) {
-			super(linha,  coluna, cor);
-			if(cor.equals("Black"))
+	public Cavalo(int linha, int coluna,Boolean cor) {
+			super(linha, coluna,cor);
+			this.branco = cor;
+			if(cor = false)
 			{
 			this.imagem = "C(Preta)";
 			}
@@ -14,6 +15,7 @@ public class Cavalo extends Peca{
 			{
 			this.imagem = "C(Branca)";
 			}
+			this.id = 4;
 	}
 	public String getImagem() {
 		return imagem;
