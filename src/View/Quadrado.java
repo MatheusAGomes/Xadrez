@@ -27,9 +27,9 @@ public class Quadrado extends JPanel {
 		this.coluna = coluna;
 		
 		try {
-			if(selecionada.mostrarquadrado(linha, coluna, selecionada,this.linha,this.coluna))
+			if(selecionada.mostrarquadrado(selecionada,this.linha,this.coluna))
 			{
-				System.out.printf("matheus");
+				
 				this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));
 			}
 		} catch (Exception e) {
@@ -48,11 +48,11 @@ public class Quadrado extends JPanel {
 		this.add(peca);
 		
 		try {
-		if((peca.getPeca() != null && peca.getPeca().selecionada == true) )
+		if((peca.getPeca() != null && peca.getPeca().selecionada == true))
 		{
 			this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));
 		}
-		if(peca.getPeca().tab.selecionada.mostrarquadrado(linha, coluna,peca.getPeca().tab.selecionada,this.linha,this.coluna))
+		if(peca.getPeca().tab.selecionada.mostrarquadrado(peca.getPeca().tab.selecionada,this.linha,this.coluna) && peca.getPeca().branco != peca.getPeca().tab.selecionada.branco)
 		{
 			System.out.printf("matheus");
 			this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));

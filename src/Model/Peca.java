@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -83,7 +84,7 @@ public abstract class Peca {
 		
 		
 	}
-	public abstract Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
+	public abstract Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
 	
 
 }

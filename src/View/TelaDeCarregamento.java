@@ -40,7 +40,7 @@ public class TelaDeCarregamento extends JFrame {
 		
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(TelaDeCarregamento.class.getResource("/View/gif.gif")));
+		lblNewLabel.setIcon(new ImageIcon(TelaDeCarregamento.class.getResource("/View/imagens/gif.gif")));
 		lblNewLabel.setBounds(38, 30, 387, 273);
 		contentPane.add(lblNewLabel);
 		

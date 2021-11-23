@@ -1,20 +1,22 @@
 package Model;
 
+import java.awt.Image;
+
 import View.TabuleiroVisualizacao;
 
 public class Bispo extends Peca{
 
-	String imagem;
+	
 	
 	public Bispo(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor = false)
+			if(cor == false)
 			{
-			this.imagem = "B(Preta)";
+			this.imagem = "Bispo(P)";
 			}
 			else
 			{
-			this.imagem = "B(Branca)";
+			this.imagem = "Bispo(B)";
 			}
 			this.id = 3;
 	}
@@ -22,9 +24,38 @@ public class Bispo extends Peca{
 		return imagem;
 	}
 	@Override
-	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+		for (int i = selecionada.getLinha(); i < 8;) {
+			for(int j = selecionada.getColuna();j<8;) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+				
+				i++;
+				j++;
+			}
+			
+			
+		}
+		
+		for (int i = selecionada.getLinha(); i >= 0;) {
+			for(int j = selecionada.getColuna();j<8;) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+				
+				i--;
+				j++;
+			}
+			
+			
+		}
+		
+		
+		return false;
 	}
+	
 
 }

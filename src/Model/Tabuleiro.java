@@ -2,6 +2,7 @@ package Model;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 
 public class Tabuleiro {
@@ -133,7 +134,7 @@ public class Tabuleiro {
 				if(peca == null || !peca.branco.equals(this.selecionada.branco))
 				{
 					//caso haja uma peca selecionada e o click é em uma posicao sem peca ou peca adversaria ocorre o movimento(retira a peca da casa e coloca em outra)
-					System.out.print("a");
+					if(this.selecionada.mostrarquadrado(this.selecionada,linha,coluna)) {
 					int antigalinha = this.selecionada.linha;
 					int antigaColuna = this.selecionada.coluna;
 					this.selecionada.mover(linha, coluna);
@@ -141,8 +142,16 @@ public class Tabuleiro {
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
+					}
 					
-					
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
 				}
 				
 				}

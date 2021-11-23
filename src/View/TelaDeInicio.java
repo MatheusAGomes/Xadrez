@@ -54,7 +54,7 @@ public class TelaDeInicio extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(TelaDeInicio.class.getResource("/View/New Project.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaDeInicio.class.getResource("/View/Imagens/New Project.png")));
 		lblNewLabel.setBounds(-390, 12, 1215, 231);
 		contentPane.add(lblNewLabel);
 		

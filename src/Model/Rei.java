@@ -1,19 +1,21 @@
 package Model;
 
+import java.awt.Image;
+
 import View.TabuleiroVisualizacao;
 
 public class Rei extends Peca{
-	String imagem;
+	
 
 	public Rei(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor = false)
+			if(cor == false)
 			{
-			this.imagem = "R(Preta)";
+			this.imagem = "Rei(P)";
 			}
 			else
 			{
-			this.imagem = "R(Branca)";
+			this.imagem = "Rei(B)";
 			}
 			this.id = 5;
 	}
@@ -21,9 +23,10 @@ public class Rei extends Peca{
 		return imagem;
 	}
 	@Override
-	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		// TODO Auto-generated method stub
-		return null;
+		
+		return false;
 	}
 	
 

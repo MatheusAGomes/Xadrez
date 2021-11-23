@@ -1,20 +1,22 @@
 package Model;
 
+import java.awt.Image;
+
 import View.TabuleiroVisualizacao;
 
 public class Dama extends Peca{
 
-		String imagem;
+
 	
 	public Dama( int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor = false)
+			if(cor == false)
 			{
-			this.imagem = "D(Preta)";
+			this.imagem = "Dama(P)";
 			}
 			else
 			{
-			this.imagem = "D(Branca)";
+			this.imagem = "Dama(B)";
 			}
 			this.id = 4;
 	}
@@ -23,7 +25,7 @@ public class Dama extends Peca{
 	}
 	
 	@Override
-	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		// TODO Auto-generated method stub
 		return null;
 	}

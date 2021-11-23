@@ -6,17 +6,17 @@ import View.Quadrado;
 import View.TabuleiroVisualizacao;
 
 public class Peao extends Peca{
-	String imagem;
+	
 
 	public Peao(int linha, int coluna,Boolean cor) {
-			super(linha,  coluna, cor);
-			if(cor = false)
+			super(linha,coluna,cor);
+			if(cor == false)
 			{
-			this.imagem = "P(Preta)";
+			this.imagem = "Peao(P)";
 			}
 			else
 			{
-			this.imagem = "P(Branca)";
+			this.imagem = "Peao(B)";
 			}
 			this.id = 1;
 			
@@ -29,15 +29,26 @@ public class Peao extends Peca{
 
 
 	@Override
-	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		
-		if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
-			return true;
+		if(selecionada.branco == true) {
+			if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+				return true;
+			}
+			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+				return true;
+			}
 		}
-		if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
-			return true;
-		}
-		return false;
+			else
+			{
+				if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
+					return true;
+				}
+				if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
+					return true;
+				}
+			}
+			return false;
 	}
 	
 	

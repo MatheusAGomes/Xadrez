@@ -1,19 +1,21 @@
 package Model;
 
+import java.awt.Image;
+
 import View.TabuleiroVisualizacao;
 
 public class Torre extends Peca{
-	String imagem;
+	
 
 	public Torre(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
-			if(cor = false)
+			if(cor == false)
 			{
-			this.imagem = "Torre(Preta)";
+			this.imagem = "Torre(P)";
 			}
 			else
 			{
-			this.imagem = "Torre(Branca)";
+			this.imagem = "Torre(B)";
 			}
 			this.id = 2;
 	}
@@ -21,9 +23,14 @@ public class Torre extends Peca{
 		return imagem;
 	}
 	@Override
-	public Boolean mostrarquadrado(int linha,int coluna,Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
+		if(selecionada.getColuna() == colunadoquadradoverificado ) {
+			return true;
+		}
+		if(selecionada.getLinha()    == linhadoquadradoverificado) {
+			return true;
+		}
+		return false;
 	}
 
 }
