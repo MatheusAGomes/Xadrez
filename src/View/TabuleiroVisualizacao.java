@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
@@ -94,6 +95,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		Quadrado quadrado = (Quadrado) e.getSource();
 		
 		this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
+		
+	
 		
 		this.criarTab();
 		

@@ -1,19 +1,29 @@
 package Model;
 
 import java.awt.Color;
+import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
+
+import View.Jogo;
+import View.TelaDeInicio;
 
 public class Tabuleiro {
 	
 	private Peca[][] peca;
 	public Peca selecionada = null;
-	public Boolean vezdobranco = true;
+	public Boolean vezdobranco;
+	public Jogo jogo;
 	
-	public Tabuleiro()
+	
+	public Tabuleiro(Jogo jogo)
 	{
+	
+		this.vezdobranco = true;
 		this.peca = new Peca[8][8];
+		this.jogo = jogo;
 			//posicionando pecas
 		//peoes
 		//brancos
@@ -96,16 +106,12 @@ public class Tabuleiro {
 	}
 
 	
-	public void trocarAvez() {
+	public void trocarAvez(Boolean var) {
 		
-		if(vezdobranco = true)
-		{
-			this.vezdobranco = false;
-		}
-		else
-		{
-			this.vezdobranco = true;
-		}
+		
+			this.vezdobranco = !var;
+		
+		
 		
 	}
 
@@ -120,6 +126,12 @@ public class Tabuleiro {
 			peca.setOpostoofselecionada();
 			
 		}
+		else {
+			if(peca.branco == false && vezdobranco == false && peca!= null) {
+				this.selecionada = peca;
+				peca.setOpostoofselecionada();
+			}
+		}
 		}else
 			{
 			// caso ja exista peca selecionada e a posicao que estao selecionando seja a da peca selecionada
@@ -131,8 +143,9 @@ public class Tabuleiro {
 			
 			}
 			else {
-				if(peca == null || !peca.branco.equals(this.selecionada.branco))
+				if(peca == null)
 				{
+					
 					//caso haja uma peca selecionada e o click é em uma posicao sem peca ou peca adversaria ocorre o movimento(retira a peca da casa e coloca em outra)
 					if(this.selecionada.mostrarquadrado(this.selecionada,linha,coluna)) {
 					int antigalinha = this.selecionada.linha;
@@ -142,6 +155,9 @@ public class Tabuleiro {
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
+					this.trocarAvez(this.vezdobranco);
+					
+					
 					}
 					else
 					{
@@ -151,13 +167,62 @@ public class Tabuleiro {
 				}
 				else
 				{
+					if(!peca.branco.equals(this.selecionada.branco)) {
+						if(this.selecionada.mostrarquadrado(this.selecionada,linha,coluna)) {
+							int antigalinha = this.selecionada.linha;
+							int antigaColuna = this.selecionada.coluna;
+							this.selecionada.mover(linha, coluna);
+							this.addnotab(this.selecionada);
+							this.peca[antigalinha][antigaColuna] = null;
+							this.selecionada.selecionada = false;
+							this.selecionada = null;
+							this.trocarAvez(this.vezdobranco);
+							peca.eliminado = true;
+							System.out.print(peca.id);
+							this.ValidarVitoria(peca.id);
+							
+							
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
+							}
+					}
+					else {
 					JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
+					}
 				}
 				
 				}
 			}
 		
 	}
+	
+	
+	public Boolean ValidarVitoria(int id){
+		
+		
+		if(id == 5)
+		{
+			//verificacao negada pq a troca acontece antes da vericacao de vitoria.
+			if(!this.vezdobranco)
+			{
+			System.out.print("Acabou Branco ganhou");
+			
+			}
+			else
+			{
+				System.out.print("Acabou Preto ganhou");
+			}
+			TelaDeInicio tela = new TelaDeInicio();
+			tela.setVisible(true);
+			this.jogo.setVisible(false);
+		}
+		
+		return false;
+		
+	}
+	
 
 	private void mover(Peca selecionada2, int linha, int coluna) {
 		selecionada2.mover(linha, coluna);

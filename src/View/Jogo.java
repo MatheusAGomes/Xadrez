@@ -28,26 +28,29 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
 import javax.swing.border.BevelBorder;
 
 public class Jogo extends JFrame {
 
 	private JPanel contentPane;
 	private Tabuleiro tabuleiro;
+	public String jogador1;
+	public String jogador2;
+	
+	
+	
 
 	public Jogo(String Player1, String Player2) {
 		
-		TabuleiroVisualizacao tab =new TabuleiroVisualizacao(new Tabuleiro());
-		
+		TabuleiroVisualizacao tab =new TabuleiroVisualizacao(new Tabuleiro(this));
 		getContentPane().add(tab);
 		tab.setBounds(74, 35, 400, 400);
-		
-	
-
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(10, 10, 795, 550);
 		getContentPane().setLayout(null);
+		
+		
 		
 		JLabel lblNewLabel = new JLabel("Jogador 1 :");
 		lblNewLabel.setBounds(540, 277, 208, 14);
@@ -101,22 +104,36 @@ public class Jogo extends JFrame {
 		lblVez.setBounds(550, 213, 219, 14);
 		getContentPane().add(lblVez);
 		
-		JLabel lblVezDe = new JLabel();
+		JLabel lblVezDe = new JLabel("Branco");
 		lblVezDe.setBounds(675, 213, 94, 14);
 		getContentPane().add(lblVezDe);
 		
-		if(tab.getTab().vezdobranco = true)
-		{
-			lblVezDe.setText("Branco");
+		if (this.tabuleiro != null ) {
+			if(this.tabuleiro.vezdobranco == true  )
+			{
+				lblVezDe.setText("Branco");
+			}
+			else
+			{
+				lblVezDe.setText("Preto");
+			}
+		
 		}
-		else
-		{
-			lblVezDe.setText("Preto");
-		}
+			
+		
 				
 		
 		
 	}
+
+
+
+	
+	
+	
+	
+	
+	
 	}
 	
 	
