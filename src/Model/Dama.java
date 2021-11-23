@@ -27,7 +27,49 @@ public class Dama extends Peca{
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		// TODO Auto-generated method stub
-		return null;
+		
+		
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha();j>=0 && i>=0;i--,j--) {
+			
+			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+			{
+				return true;
+			}
+			
+		}
+		
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j>=0 && i>=0);i--,j++) {
+			
+			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+			{
+				return true;
+			}
+			
+		}
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j++) {
+			
+			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+			{
+				return true;
+			}
+			
+		}
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j--) {
+			
+			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+			{
+				return true;
+			}
+			
+		}
+		if(selecionada.getColuna() == colunadoquadradoverificado) {
+			return true;
+		}
+		if(selecionada.getLinha() == linhadoquadradoverificado) {
+			return true;
+		}
+		
+		return false;
 	}
 
 }

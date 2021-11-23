@@ -25,33 +25,47 @@ public class Bispo extends Peca{
 	}
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
-		for (int i = selecionada.getLinha(); i < 8;) {
-			for(int j = selecionada.getColuna();j<8;) {
-				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-				{
-					return true;
-				}
-				
-				i++;
-				j++;
-			}
-			
-			
-		}
 		
-		for (int i = selecionada.getLinha(); i >= 0;) {
-			for(int j = selecionada.getColuna();j<8;) {
+		
+			
+			for(int j = selecionada.getColuna(),i = selecionada.getLinha();j>=0 && i>=0;i--,j--) {
+				
 				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
 				{
 					return true;
 				}
 				
-				i--;
-				j++;
 			}
 			
+			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j>=0 && i>=0);i--,j++) {
+				
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+				
+			}
+			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j++) {
+				
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+				
+			}
+			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j--) {
+				
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+				
+			}
+
 			
-		}
+			
+			
+		
 		
 		
 		return false;
