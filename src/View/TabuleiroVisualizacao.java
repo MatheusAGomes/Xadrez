@@ -16,14 +16,15 @@ import Model.Tabuleiro;
 public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
 	private Tabuleiro tabuleiro;
-	
 	private Quadrado[][] quadrado;
+	public Boolean finalizado;
 	
 	public TabuleiroVisualizacao(Tabuleiro tabuleiro)
 	{
 		this.quadrado = new Quadrado[8][8];
 		this.tabuleiro = tabuleiro;
 		this.criarTab();
+		this.finalizado = false;
 	}
 	
 	
@@ -92,14 +93,15 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		Quadrado quadrado = (Quadrado) e.getSource();
-		
+		if(this.finalizado == false) {
+		Quadrado quadrado = (Quadrado) e.getSource();	
 		this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
-		
-	
-		
 		this.criarTab();
-		
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "JOGO JA FINALIZADO");
+		}
 		
 		
 	}

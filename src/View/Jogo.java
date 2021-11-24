@@ -37,6 +37,10 @@ public class Jogo extends JFrame {
 	private Tabuleiro tabuleiro;
 	public String jogador1;
 	public String jogador2;
+	public TabuleiroVisualizacao tab;
+	
+	public JLabel lblVezDe = new JLabel();
+	
 	
 	
 	
@@ -49,6 +53,7 @@ public class Jogo extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(10, 10, 795, 550);
 		getContentPane().setLayout(null);
+		this.tab = tab;
 		
 		
 		
@@ -101,39 +106,39 @@ public class Jogo extends JFrame {
 		getContentPane().add(btnProporEmpatePreto);
 		
 		JLabel lblVez = new JLabel("A vez \u00E9 das pe\u00E7as :");
-		lblVez.setBounds(550, 213, 219, 14);
+		lblVez.setBounds(550, 213, 119, 14);
 		getContentPane().add(lblVez);
 		
-		JLabel lblVezDe = new JLabel("Branco");
-		lblVezDe.setBounds(675, 213, 94, 14);
+		
+		this.lblVezDe.setText("Branco");
+		this.lblVezDe.setBounds(675, 213, 94, 14);
 		getContentPane().add(lblVezDe);
 		
-		if (this.tabuleiro != null ) {
-			if(this.tabuleiro.vezdobranco == true  )
-			{
-				lblVezDe.setText("Branco");
-			}
-			else
-			{
-				lblVezDe.setText("Preto");
-			}
 		
-		}
+		
+		
 			
 		
 				
 		
 		
 	}
-
-
-
-	
-	
-	
-	
-	
-	
+	public void trocarvez(Boolean vezdobranco) {
+		if(vezdobranco == true) {
+			System.out.print("a");
+		this.lblVezDe.setText("Branco");
+		this.lblVezDe.setBounds(675, 213, 94, 14);
+		getContentPane().add(lblVezDe);
+		}
+		else
+		{
+			System.out.print("a");
+		this.lblVezDe.setText("Preto");
+		this.lblVezDe.setBounds(675, 213, 94, 14);
+		getContentPane().add(lblVezDe);
+		
+		}
+	}
 	}
 	
 	

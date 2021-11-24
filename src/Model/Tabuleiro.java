@@ -156,7 +156,7 @@ public class Tabuleiro {
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
 					this.trocarAvez(this.vezdobranco);
-					
+					this.jogo.trocarvez(vezdobranco);
 					
 					}
 					else
@@ -177,6 +177,7 @@ public class Tabuleiro {
 							this.selecionada.selecionada = false;
 							this.selecionada = null;
 							this.trocarAvez(this.vezdobranco);
+							this.jogo.trocarvez(vezdobranco);
 							peca.eliminado = true;
 							System.out.print(peca.id);
 							this.ValidarVitoria(peca.id);
@@ -199,27 +200,36 @@ public class Tabuleiro {
 	}
 	
 	
-	public Boolean ValidarVitoria(int id){
-		
-		
+	public void ValidarVitoria(int id){
+		Object[] options = { "Voltar ao tabuleiro", "Voltar ao menu" };
+		int resposta;
 		if(id == 5)
 		{
 			//verificacao negada pq a troca acontece antes da vericacao de vitoria.
 			if(!this.vezdobranco)
 			{
-			System.out.print("Acabou Branco ganhou");
-			
+				this.jogo.tab.finalizado = true;
+				resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","Aviso",
+				          JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+				              null, options, options[0]);
+				System.out.print(resposta);
 			}
 			else
 			{
-				System.out.print("Acabou Preto ganhou");
+				this.jogo.tab.finalizado = true;
+				resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","Aviso",
+				          JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+				              null, options, options[0]);
+				System.out.print(resposta);
 			}
-			TelaDeInicio tela = new TelaDeInicio();
-			tela.setVisible(true);
-			this.jogo.setVisible(false);
+			
+		    
+		//	TelaDeInicio tela = new TelaDeInicio();
+		//	tela.setVisible(true);
+		//	this.jogo.setVisible(false);
 		}
 		
-		return false;
+		
 		
 	}
 	
