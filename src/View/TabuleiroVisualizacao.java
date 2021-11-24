@@ -17,14 +17,18 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
 	private Tabuleiro tabuleiro;
 	private Quadrado[][] quadrado;
+	
 	public Boolean finalizado;
+	public Boolean empatado;
 	
 	public TabuleiroVisualizacao(Tabuleiro tabuleiro)
 	{
 		this.quadrado = new Quadrado[8][8];
+		
 		this.tabuleiro = tabuleiro;
 		this.criarTab();
 		this.finalizado = false;
+		
 	}
 	
 	
@@ -92,15 +96,62 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		Object[] options = { "Voltar ao tabuleiro", "Voltar ao menu" };
+		int resposta;
 		if(this.finalizado == false) {
 		Quadrado quadrado = (Quadrado) e.getSource();	
 		this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
 		this.criarTab();
+		//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
+		if(this.finalizado == true || this.empatado)
+			{
+			
+			if(!this.tabuleiro.vezdobranco)
+			{
+				
+				resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","XEQUE-MATE",
+				          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				              null, options, options[0]);
+				System.out.print(resposta);
+			}
+			else
+			{
+				
+				resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","XEQUE-MATE",
+				          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				              null, options, options[0]);
+				System.out.print(resposta);
+			}
+			if(resposta == 1)
+			{
+				this.tabuleiro.jogo.setVisible(false);
+				new TelaDeInicio().setVisible(true);;
+			}
+			
+			}
+		}
+		
+		if(this.empatado == true)
+		{
+		
+		
+			
+			resposta  = JOptionPane.showOptionDialog(null,"Jogo empatado !","EMPATE POR FALTA DE PECA",
+			          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+			              null, options, options[0]);
+			System.out.print(resposta);
+		
+		if(resposta == 1)
+		{
+			this.tabuleiro.jogo.setVisible(false);
+			new TelaDeInicio().setVisible(true);;
+		
+		
 		}
 		else
 		{
 			JOptionPane.showMessageDialog(null, "JOGO JA FINALIZADO");
+		}
 		}
 		
 		

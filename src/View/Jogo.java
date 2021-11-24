@@ -38,7 +38,9 @@ public class Jogo extends JFrame {
 	public String jogador1;
 	public String jogador2;
 	public TabuleiroVisualizacao tab;
-	
+	public Peca[][] pecaseliminados;
+	public int QuantidadeDePecasEliminadasBrancas;
+	public int QuantidadeDePecasEliminadasPretas;
 	public JLabel lblVezDe = new JLabel();
 	
 	
@@ -46,6 +48,11 @@ public class Jogo extends JFrame {
 	
 
 	public Jogo(String Player1, String Player2) {
+		
+		this.QuantidadeDePecasEliminadasBrancas = 0;
+		this.QuantidadeDePecasEliminadasPretas = 0;
+		
+		this.pecaseliminados = new Peca[2][16];
 		
 		TabuleiroVisualizacao tab =new TabuleiroVisualizacao(new Tabuleiro(this));
 		getContentPane().add(tab);
@@ -113,6 +120,17 @@ public class Jogo extends JFrame {
 		this.lblVezDe.setText("Branco");
 		this.lblVezDe.setBounds(675, 213, 94, 14);
 		getContentPane().add(lblVezDe);
+		
+		JButton btnNewButton = new JButton("Sair");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				new TelaDeInicio().setVisible(true);;
+			}
+		});
+		btnNewButton.setBounds(540, 449, 208, 23);
+		getContentPane().add(btnNewButton);
 		
 		
 		

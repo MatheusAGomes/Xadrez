@@ -95,6 +95,7 @@ public class Tabuleiro {
 		
 	}
 	
+	
 	public Peca getPeca(int linha, int coluna)
 	{
 		return this.peca[linha][coluna];
@@ -155,9 +156,10 @@ public class Tabuleiro {
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
+					//trocar a vez
 					this.trocarAvez(this.vezdobranco);
 					this.jogo.trocarvez(vezdobranco);
-					
+				//	this.Validar_Empate_Por_Peca();
 					}
 					else
 					{
@@ -176,11 +178,27 @@ public class Tabuleiro {
 							this.peca[antigalinha][antigaColuna] = null;
 							this.selecionada.selecionada = false;
 							this.selecionada = null;
+							//trocar a vez
 							this.trocarAvez(this.vezdobranco);
 							this.jogo.trocarvez(vezdobranco);
-							peca.eliminado = true;
-							System.out.print(peca.id);
+							
+							//eliminacao da peca
+							
 							this.ValidarVitoria(peca.id);
+							
+							if(!this.vezdobranco)
+							{
+								
+								
+								this.jogo.QuantidadeDePecasEliminadasBrancas = this.jogo.QuantidadeDePecasEliminadasBrancas + 1;
+							}
+							else
+							{
+								
+								this.jogo.QuantidadeDePecasEliminadasPretas = this.jogo.QuantidadeDePecasEliminadasPretas + 1;
+							}
+						
+							this.Validar_Empate_Por_Peca();
 							
 							
 							}
@@ -205,33 +223,30 @@ public class Tabuleiro {
 		int resposta;
 		if(id == 5)
 		{
-			//verificacao negada pq a troca acontece antes da vericacao de vitoria.
-			if(!this.vezdobranco)
-			{
-				this.jogo.tab.finalizado = true;
-				resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","Aviso",
-				          JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-				              null, options, options[0]);
-				System.out.print(resposta);
-			}
-			else
-			{
-				this.jogo.tab.finalizado = true;
-				resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","Aviso",
-				          JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-				              null, options, options[0]);
-				System.out.print(resposta);
-			}
 			
-		    
-		//	TelaDeInicio tela = new TelaDeInicio();
-		//	tela.setVisible(true);
-		//	this.jogo.setVisible(false);
+				this.jogo.tab.finalizado = true;
+				
+			
 		}
+			
+			
 		
+	}
+	
+	public void Validar_Empate_Por_Peca()
+	{
+	
+		
+		
+		if(this.jogo.QuantidadeDePecasEliminadasPretas == 15 && this.jogo.QuantidadeDePecasEliminadasBrancas == 15){
+			this.jogo.tab.empatado = true;
+		}
+		System.out.printf("\n %d ",this.jogo.QuantidadeDePecasEliminadasPretas);
+		System.out.printf("  %d \n",this.jogo.QuantidadeDePecasEliminadasBrancas);
 		
 		
 	}
+	
 	
 
 	private void mover(Peca selecionada2, int linha, int coluna) {

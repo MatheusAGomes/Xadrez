@@ -32,8 +32,14 @@ public class TelaDeInicio extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+			nome[0] = JOptionPane.showInputDialog("<DIGITE O NOME DO PRIMEIRO JOGADOR>");
+			while(nome[0].isEmpty()) {
 				nome[0] = JOptionPane.showInputDialog("<DIGITE O NOME DO PRIMEIRO JOGADOR>");
+			}
 				nome[1] = JOptionPane.showInputDialog("<DIGITE O NOME DO SEGUNDO JOGADOR>");
+			while(nome[1].isEmpty()) {
+					nome[1] = JOptionPane.showInputDialog("<DIGITE O NOME DO PRIMEIRO JOGADOR>");
+				}
 				setVisible(false);
 				Jogo jogo = new Jogo(nome[0],nome[1]);
 				jogo.setVisible(true);
