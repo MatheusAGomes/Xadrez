@@ -20,6 +20,7 @@ public class Rei extends Peca{
 			this.imagem = "Rei(B)";
 			}
 			this.id = 5;
+			this.quantidadedemovimento = 0;
 	}
 	public String getImagem() {
 		return imagem;
@@ -54,6 +55,10 @@ public class Rei extends Peca{
 		}
 		
 		return false;
+	}
+	@Override
+	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
+		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
 	
 

@@ -18,6 +18,7 @@ public class Torre extends Peca{
 			this.imagem = "Torre(B)";
 			}
 			this.id = 2;
+			this.quantidadedemovimento = 0;
 	}
 	public String getImagem() {
 		return imagem;
@@ -31,6 +32,11 @@ public class Torre extends Peca{
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
+		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
 
 }

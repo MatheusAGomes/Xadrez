@@ -18,6 +18,7 @@ public abstract class Peca {
 	public Boolean eliminado;
 	public Boolean selecionada; 
 	public int linha;
+	public int quantidadedemovimento;
 	
 	public int coluna;
 	
@@ -86,6 +87,8 @@ public abstract class Peca {
 		
 	}
 	public abstract Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
+	public abstract Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
+
 	
 
 }

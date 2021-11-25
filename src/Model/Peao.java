@@ -19,6 +19,7 @@ public class Peao extends Peca{
 			this.imagem = "Peao(B)";
 			}
 			this.id = 1;
+			this.quantidadedemovimento = 0;
 			
 	}
 
@@ -31,11 +32,60 @@ public class Peao extends Peca{
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		
+		
+		
+		if(this.quantidadedemovimento == 0)
+		{
+			if(selecionada.branco == true) {
+				if(selecionada.getColuna() == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+					return true;
+				}
+				if(selecionada.getColuna()  == colunadoquadradoverificado && selecionada.getLinha()  - 2   == linhadoquadradoverificado) {
+					return true;
+				}
+			}
+				else
+				{
+					if(selecionada.getColuna() == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
+						return true;
+					}
+					if(selecionada.getColuna()  == colunadoquadradoverificado && selecionada.getLinha()  + 2   == linhadoquadradoverificado) {
+						return true;
+					}
+				}
+			
+		}
+		else
+		{
+			if(selecionada.branco == true) {
+				if(selecionada.getColuna() == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+					return true;
+				}
+				
+			}
+				else
+				{
+					if(selecionada.getColuna() == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
+						return true;
+					}
+					
+				}
+			
+		}
+			return false;
+		
+	}
+	@Override
+	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
+		
+		
+		
+		
 		if(selecionada.branco == true) {
-			if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+			if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() - 1] != null)  {
 				return true;
 			}
-			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
+			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() + 1] != null)  {
 				return true;
 			}
 		}
@@ -48,8 +98,10 @@ public class Peao extends Peca{
 					return true;
 				}
 			}
+				
 			return false;
-	}
+		}
+	
 	
 	
 }

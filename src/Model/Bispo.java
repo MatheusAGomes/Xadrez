@@ -19,6 +19,7 @@ public class Bispo extends Peca{
 			this.imagem = "Bispo(B)";
 			}
 			this.id = 3;
+			this.quantidadedemovimento = 0;
 	}
 	public String getImagem() {
 		return imagem;
@@ -69,6 +70,10 @@ public class Bispo extends Peca{
 		
 		
 		return false;
+	}
+	@Override
+	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
+		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
 	
 

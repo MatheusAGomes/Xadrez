@@ -19,6 +19,7 @@ public class Dama extends Peca{
 			this.imagem = "Dama(B)";
 			}
 			this.id = 4;
+			this.quantidadedemovimento = 0;
 	}
 	public String getImagem() {
 		return imagem;
@@ -70,6 +71,10 @@ public class Dama extends Peca{
 		}
 		
 		return false;
+	}
+	@Override
+	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
+		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
 
 }
