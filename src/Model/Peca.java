@@ -22,6 +22,7 @@ public abstract class Peca {
 	public int coluna;
 	
 	public Tabuleiro tab;
+	public Boolean Check;
 	
 	public Peca(int linha, int coluna,Boolean branco) {
 		this.linha = linha;

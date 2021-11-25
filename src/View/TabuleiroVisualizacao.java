@@ -28,6 +28,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		this.tabuleiro = tabuleiro;
 		this.criarTab();
 		this.finalizado = false;
+		this.empatado = false;
 		
 	}
 	
@@ -98,64 +99,67 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		Object[] options = { "Voltar ao tabuleiro", "Voltar ao menu" };
 		int resposta;
-		if(this.finalizado == false) {
-		Quadrado quadrado = (Quadrado) e.getSource();	
-		this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
-		this.criarTab();
-		//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
-		if(this.finalizado == true || this.empatado)
-			{
-			
-			if(!this.tabuleiro.vezdobranco)
-			{
-				
-				resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","XEQUE-MATE",
-				          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				              null, options, options[0]);
-				System.out.print(resposta);
-			}
-			else
-			{
-				
-				resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","XEQUE-MATE",
-				          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-				              null, options, options[0]);
-				System.out.print(resposta);
-			}
-			if(resposta == 1)
-			{
-				this.tabuleiro.jogo.setVisible(false);
-				new TelaDeInicio().setVisible(true);;
-			}
-			
-			}
-		}
-		
-		if(this.empatado == true)
-		{
-		
-		
-			
-			resposta  = JOptionPane.showOptionDialog(null,"Jogo empatado !","EMPATE POR FALTA DE PECA",
-			          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-			              null, options, options[0]);
-			System.out.print(resposta);
-		
-		if(resposta == 1)
-		{
-			this.tabuleiro.jogo.setVisible(false);
-			new TelaDeInicio().setVisible(true);;
-		
-		
+		if(this.finalizado == true || this.empatado == true) {
+			JOptionPane.showMessageDialog(null, "JOGO JA FINALIZADO");
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(null, "JOGO JA FINALIZADO");
+			
+			Quadrado quadrado = (Quadrado) e.getSource();	
+			this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
+			this.criarTab();
+			//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
+			if(this.finalizado == true )
+				{
+				
+						if(!this.tabuleiro.vezdobranco)
+						{
+							
+									resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","XEQUE-MATE",
+									          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+									              null, options, options[0]);
+									
+						}
+						else
+						{
+							
+									resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","XEQUE-MATE",
+									          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+									              null, options, options[0]);
+						}
+									if(resposta == 1)
+									{
+										this.tabuleiro.jogo.setVisible(false);
+										new TelaDeInicio().setVisible(true);;
+									}
+						
+				
+				}
+			
+					if(this.empatado == true)
+					{
+					
+					
+						
+								resposta  = JOptionPane.showOptionDialog(null,"Jogo empatado !","EMPATE",
+								          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+								              null, options, options[0]);
+								System.out.print(resposta);
+							
+							if(resposta == 1)
+							{
+										this.tabuleiro.jogo.setVisible(false);
+										new TelaDeInicio().setVisible(true);;
+									
+							
+							}
+					}
+			}
 		}
-		}
+	
+	
 		
-		
-	}
+	
 
 
 	@Override

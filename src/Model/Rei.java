@@ -5,10 +5,12 @@ import java.awt.Image;
 import View.TabuleiroVisualizacao;
 
 public class Rei extends Peca{
+		
 	
 
 	public Rei(int linha, int coluna,Boolean cor) {
 			super(linha,  coluna, cor);
+			this.Check = false;
 			if(cor == false)
 			{
 			this.imagem = "Rei(P)";
