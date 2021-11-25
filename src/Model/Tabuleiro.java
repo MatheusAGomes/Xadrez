@@ -152,7 +152,28 @@ public class Tabuleiro {
 					
 					int antigalinha = this.selecionada.linha;
 					int antigaColuna = this.selecionada.coluna;
-					this.selecionada.mover(linha, coluna);
+					if(selecionada.id == 1)
+					{
+						if(selecionada.branco == true)
+						{
+							this.jogo.tab.jogadasdoBranco = 0;	
+						}
+						else
+						{
+							this.jogo.tab.jogadasdoPreto = 0;
+						}
+						
+						
+					}
+						if(selecionada.branco == true)
+						{
+							this.jogo.tab.jogadasdoBranco = this.jogo.tab.jogadasdoBranco + 1;
+						}
+						else
+						{
+							this.jogo.tab.jogadasdoPreto = this.jogo.tab.jogadasdoPreto + 1;
+						}
+										this.selecionada.mover(linha, coluna);
 					this.selecionada.quantidadedemovimento = this.selecionada.quantidadedemovimento + 1;
 					this.addnotab(this.selecionada);
 					this.peca[antigalinha][antigaColuna] = null;

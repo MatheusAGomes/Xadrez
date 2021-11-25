@@ -52,12 +52,7 @@ public class Quadrado extends JPanel {
 		{
 			this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));
 		}
-		/*
-		if(peca.getPeca().tab.selecionada.mostrarquadrado(peca.getPeca().tab.selecionada,this.linha,this.coluna) && peca.getPeca().branco != peca.getPeca().tab.selecionada.branco)
-		{
-			this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));
-		}
-		*/
+		
 		if(peca.getPeca().tab.selecionada.MostrarComida(peca.getPeca().tab.selecionada,this.linha,this.coluna) && peca.getPeca().branco != peca.getPeca().tab.selecionada.branco) {
 			
 			this.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN));

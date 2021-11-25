@@ -17,9 +17,10 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
 	private Tabuleiro tabuleiro;
 	private Quadrado[][] quadrado;
-	
 	public Boolean finalizado;
 	public Boolean empatado;
+	public int jogadasdoBranco;
+	public int jogadasdoPreto;
 	
 	public TabuleiroVisualizacao(Tabuleiro tabuleiro)
 	{
@@ -29,7 +30,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		this.criarTab();
 		this.finalizado = false;
 		this.empatado = false;
-		
+		this.jogadasdoBranco = 20;
+		this.jogadasdoPreto = 20;
 	}
 	
 	
@@ -108,6 +110,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 			Quadrado quadrado = (Quadrado) e.getSource();	
 			this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
 			this.criarTab();
+			System.out.printf("\n %d ",this.jogadasdoBranco);
+			System.out.printf(" %d \n",this.jogadasdoPreto);
 			//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
 			if(this.finalizado == true )
 				{
@@ -136,7 +140,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 				
 				}
 			
-					if(this.empatado == true)
+					if(this.empatado == true || (this.jogadasdoBranco + this.jogadasdoPreto) == 50)
 					{
 					
 					
