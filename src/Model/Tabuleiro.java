@@ -277,7 +277,8 @@ public class Tabuleiro {
 			this.jogo.tab.empatado = true;
 		}
 		
-		int contadordepossibilidades=0;
+		int contadordepossibilidadesB=0;
+		int contadordepossibilidadesP=0;
 		
 		
 			// Rei Branco	
@@ -288,71 +289,138 @@ public class Tabuleiro {
 				try {
 					if(this.peca[i][j].id != 5 && this.peca[i][j].branco == false && this.acharReiBranco().Check == false && this.vezdobranco == true){
 						//fazer 8 verificacoes por rei
-						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna))
-							
-						{
-							// + = 
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf("\n %d",contadordepossibilidades);
+						
+						
+						if(this.acharReiBranco().linha + 1 <= 7) {
+						
+							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna))	
+							{
+								
+								contadordepossibilidadesB = contadordepossibilidadesB + 1;
+								System.out.printf("\n %d",contadordepossibilidadesB);
+								// + = 
+								
+							}
 						}
+						if(this.acharReiBranco().linha + 1 <= 7 && this.acharReiBranco().coluna - 1 >=0) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna - 1))
 						{
 							// + -
 							
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
+						if(this.acharReiBranco().linha + 1 <= 7 && this.acharReiBranco().coluna + 1 <= 7 ) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna + 1))
 						{
 							// + +
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
-
+						}
 
 						
-						
+						if(this.acharReiBranco().coluna - 1 >=0) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha,this.acharReiBranco().coluna - 1))
 						{
 							// = - 
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
+						if(this.acharReiBranco().coluna + 1 <= 7) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha,this.acharReiBranco().coluna + 1))
 						{
 							// = +
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
 						
-						
-						
-						
+						//
+						if(this.acharReiBranco().linha - 1 >=0 && this.acharReiBranco().coluna - 1 >=0) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna - 1))
 						{
 							// - -
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
+						if( this.acharReiBranco().linha - 1 >=0 && this.acharReiBranco().coluna + 1 <= 7) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna + 1))
 						{
 							// - +
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
+						if(this.acharReiBranco().linha - 1 >=0) {
 						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna))
 						{
 							// - =
-							contadordepossibilidades = contadordepossibilidades + 1;
-							System.out.printf(" %d ",contadordepossibilidades);
+							contadordepossibilidadesB = contadordepossibilidadesB + 1;
+							System.out.printf(" %d ",contadordepossibilidadesB);
 
 						}
+						}
+						
+						// seja fora do tabuleiro soma tambem
+						
+						//coluna
+						if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha >= 1 && this.acharReiBranco().linha <= 6 )
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 3;
+						}
+						if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha >= 1 && this.acharReiBranco().linha <= 6 )
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 3;
+						}
+						//corner
+						if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha == 0)
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 5;
+						}
+						if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha == 7)
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 5;
+						}
+						if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha == 7)
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 5;
+						}
+						if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha == 0)
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 5;
+						}
+						
+						if(this.acharReiBranco().linha == 0 && this.acharReiBranco().coluna >= 1 && this.acharReiBranco().coluna <= 6 )
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 3;
+						}
+						if(this.acharReiBranco().linha == 7 && this.acharReiBranco().coluna >= 1 && this.acharReiBranco().coluna <= 6 )
+						{
+							
+							contadordepossibilidadesB = contadordepossibilidadesB + 3;
+						}
+						
+						
+						
+						
+						
 						
 					}
 						
@@ -362,8 +430,161 @@ public class Tabuleiro {
 				
 			}
 		}
+		for(int i = 0; i <8; i++)
+		{
+			for(int j = 0; j <8; j++)
+			{
+				try {
+					if(this.peca[i][j].id != 5 && this.peca[i][j].branco == true && this.acharReiPreto().Check == false && this.vezdobranco == false){
+						//fazer 8 verificacoes por rei
+						
+						
+						if(this.acharReiPreto().linha + 1 <= 7) {
+						
+							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna))	
+							{
+								
+								contadordepossibilidadesP = contadordepossibilidadesP + 1;
+								System.out.printf("\n %d",contadordepossibilidadesP);
+								// + = 
+								
+							}
+						}
+						if(this.acharReiPreto().linha + 1 <= 7 && this.acharReiPreto().coluna - 1 >=0) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna - 1))
+						{
+							// + -
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						if(this.acharReiPreto().linha + 1 <= 7 && this.acharReiPreto().coluna + 1 <= 7 ) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna + 1))
+						{
+							// + +
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+
+						
+						if(this.acharReiPreto().coluna - 1 >=0) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha,this.acharReiPreto().coluna - 1))
+						{
+							// = - 
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						if(this.acharReiPreto().coluna + 1 <= 7) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha,this.acharReiPreto().coluna + 1))
+						{
+							// = +
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						
+						//
+						if(this.acharReiPreto().linha - 1 >=0 && this.acharReiPreto().coluna - 1 >=0) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna - 1))
+						{
+							// - -
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						if( this.acharReiPreto().linha - 1 >=0 && this.acharReiPreto().coluna + 1 <= 7) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna + 1))
+						{
+							// - +
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						if(this.acharReiPreto().linha - 1 >=0) {
+						if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna))
+						{
+							// - =
+							contadordepossibilidadesP = contadordepossibilidadesP + 1;
+							System.out.printf(" %d ",contadordepossibilidadesP);
+
+						}
+						}
+						
+						// seja fora do tabuleiro soma tambem
+						
+						//coluna
+						if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha >= 1 && this.acharReiPreto().linha <= 6 )
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 3;
+						}
+						if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha >= 1 && this.acharReiPreto().linha <= 6 )
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 3;
+						}
+						//corner
+						if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha == 0)
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 5;
+						}
+						if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha == 7)
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 5;
+						}
+						if(this.acharReiPreto().coluna == 0 && this.acharReiBranco().linha == 7)
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 5;
+						}
+						if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha == 0)
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 5;
+						}
+						
+						if(this.acharReiPreto().linha == 0 && this.acharReiPreto().coluna >= 1 && this.acharReiPreto().coluna <= 6 )
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 3;
+						}
+						if(this.acharReiPreto().linha == 7 && this.acharReiPreto().coluna >= 1 && this.acharReiPreto().coluna <= 6 )
+						{
+							
+							contadordepossibilidadesP = contadordepossibilidadesP + 3;
+						}
+						
+						
+						
+						
+						
+						
+					}
+						
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
+			}
+		}
+		System.out.printf("\n Soma:  %d ",contadordepossibilidadesP);
 		
-		if(contadordepossibilidades == 8)
+		if(contadordepossibilidadesB >= 8)
+		{
+			this.jogo.tab.empatado = true;
+		}
+		if(contadordepossibilidadesP >= 8)
 		{
 			this.jogo.tab.empatado = true;
 		}
@@ -381,6 +602,27 @@ public class Tabuleiro {
 			{
 				try {
 					if(this.peca[i][j].id == 5 && this.peca[i][j].branco == true) {
+						return this.peca[i][j];
+						}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				
+			}
+		}
+			
+		
+		return null;
+		
+	}
+	public Peca acharReiPreto()
+	{
+		for(int i = 0; i <8; i++)
+		{
+			for(int j = 0; j <8; j++)
+			{
+				try {
+					if(this.peca[i][j].id == 5 && this.peca[i][j].branco == false) {
 						return this.peca[i][j];
 						}
 				} catch (Exception e) {

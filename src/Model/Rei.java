@@ -27,6 +27,7 @@ public class Rei extends Peca{
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		// TODO Auto-generated method stub
+		
 		if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado) {
 			return true;
 		}
@@ -51,6 +52,7 @@ public class Rei extends Peca{
 		if(selecionada.getColuna() == colunadoquadradoverificado && selecionada.getLinha() - 1 == linhadoquadradoverificado) {
 			return true;
 		}
+		
 		return false;
 	}
 	
