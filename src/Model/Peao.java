@@ -82,23 +82,21 @@ public class Peao extends Peca{
 	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
 		
 		
-		
-		
 		if(selecionada.branco == true) {
 			if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() - 1] != null)  {
 				return true;
 			}
-			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() + 1] != null)  {
+			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() - 1] != null)  {
 				return true;
 			}
 		}
 			else
 			{
-				if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
-					return true;
+				if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() + 1] != null)  {
+				return true;
 				}
-				if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado) {
-					return true;
+				if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() + 1] != null)  {
+				return true;
 				}
 			}
 				
