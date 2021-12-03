@@ -71,6 +71,9 @@ public class Quadrado extends JPanel {
 	}
 	
 	
+		
+		
+	
 	
 	
 	

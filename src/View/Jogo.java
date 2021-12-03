@@ -22,6 +22,7 @@ import Model.Tabuleiro;
 import Model.Torre;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
@@ -30,6 +31,8 @@ import java.awt.event.MouseListener;
 
 
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Jogo extends JFrame {
 
@@ -42,19 +45,23 @@ public class Jogo extends JFrame {
 	public int QuantidadeDePecasEliminadasBrancas;
 	public int QuantidadeDePecasEliminadasPretas;
 	public JLabel lblVezDe = new JLabel();
+	JButton btnDesistirPreto = new JButton("Desistir");
+	JButton btnDesistirBranco = new JButton("Desistir");
+	JButton btnProporBranco = new JButton("Propor empate");
+	JButton btnProporPreto = new JButton("Propor empate");
 	
 	
-	
-	
-
 	public Jogo(String Player1, String Player2) {
 		
+		btnDesistirPreto.setEnabled(false);
+		
+		btnProporPreto.setEnabled(false);
 		this.QuantidadeDePecasEliminadasBrancas = 0;
 		this.QuantidadeDePecasEliminadasPretas = 0;
 		
 		this.pecaseliminados = new Peca[2][16];
 		
-		TabuleiroVisualizacao tab =new TabuleiroVisualizacao(new Tabuleiro(this));
+		TabuleiroVisualizacao tab = new TabuleiroVisualizacao(new Tabuleiro(this),this);
 		getContentPane().add(tab);
 		tab.setBounds(74, 35, 400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,21 +103,23 @@ public class Jogo extends JFrame {
 		lblBranco_1.setBounds(569, 77, 179, 14);
 		getContentPane().add(lblBranco_1);
 		
-		JButton btnDesistirBranco = new JButton("Desistir");
+		
 		btnDesistirBranco.setBounds(540, 333, 208, 23);
 		getContentPane().add(btnDesistirBranco);
 		
-		JButton btnProporBranco = new JButton("Propor empate");
+		
+		
 		btnProporBranco.setBounds(540, 367, 208, 23);
 		getContentPane().add(btnProporBranco);
 		
-		JButton btnDesistirPreto = new JButton("Desistir");
+		
+		
 		btnDesistirPreto.setBounds(540, 102, 208, 23);
 		getContentPane().add(btnDesistirPreto);
 		
-		JButton btnProporEmpatePreto = new JButton("Propor empate");
-		btnProporEmpatePreto.setBounds(540, 136, 208, 23);
-		getContentPane().add(btnProporEmpatePreto);
+		
+		btnProporPreto.setBounds(540, 136, 208, 23);
+		getContentPane().add(btnProporPreto);
 		
 		JLabel lblVez = new JLabel("A vez \u00E9 das pe\u00E7as :");
 		lblVez.setBounds(550, 213, 119, 14);
@@ -134,30 +143,86 @@ public class Jogo extends JFrame {
 		
 		
 		
-		
+		btnDesistirPreto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DesistirP();
+				btnDesistirPreto.setEnabled(false);
+				btnDesistirBranco.setEnabled(false);
+				btnProporBranco.setEnabled(false);
+				btnProporPreto.setEnabled(false);
+				
+			}
+		});
 			
 		
+		btnDesistirBranco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DesistirB();
+				btnDesistirPreto.setEnabled(false);
+				btnDesistirBranco.setEnabled(false);
+				btnProporBranco.setEnabled(false);
+				btnProporPreto.setEnabled(false);
+				
+			}
+		});
+		btnProporPreto.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				tab.ProporEmpate();
+			}
+		});
+		
+		btnProporBranco.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tab.ProporEmpate();
+			}
+		});
 				
 		
 		
 	}
 	public void trocarvez(Boolean vezdobranco) {
 		if(vezdobranco == true) {
-			System.out.print("a");
+		
 		this.lblVezDe.setText("Branco");
 		this.lblVezDe.setBounds(675, 213, 94, 14);
 		getContentPane().add(lblVezDe);
+		btnDesistirPreto.setEnabled(false);
+		btnProporPreto.setEnabled(false);
+		btnDesistirBranco.setEnabled(true);
+		btnProporBranco.setEnabled(true);
+		
 		}
 		else
 		{
-			System.out.print("a");
+		
 		this.lblVezDe.setText("Preto");
 		this.lblVezDe.setBounds(675, 213, 94, 14);
 		getContentPane().add(lblVezDe);
+		btnDesistirPreto.setEnabled(true);
+		btnProporPreto.setEnabled(true);
+		btnDesistirBranco.setEnabled(false);
+		btnProporBranco.setEnabled(false);
+		
 		
 		}
 	}
+		public void DesistirB()
+		{
+		this.tab.desistir = true;
+		JOptionPane.showMessageDialog(null,"Desistencia das brancas, as pretas ganharam");
+		
+		
+		}
+		public void DesistirP()
+		{
+		this.tab.desistir = true;
+		JOptionPane.showMessageDialog(null,"Desistencia das pretas, as brancas ganharam");
+		
+		
+		}
 	}
+	
 	
 	
 	

@@ -1,6 +1,9 @@
 package Model;
 
 import java.awt.Color;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import View.Quadrado;
 import View.TabuleiroVisualizacao;
@@ -101,6 +104,25 @@ public class Peao extends Peca{
 				
 			return false;
 		}
+
+
+
+	@Override
+	public void EscreverMovimento(int numerodejogadas) {
+		// TODO Auto-generated method stub
+		
+		String text = numerodejogadas+"."+this.linha+this.coluna+"\n";
+		System.out.print(text);
+		Arquivo.Write("ListaDeJogadas.txt",text);
+		
+		
+	}
+
+
+	
+
+
+	
 	
 	
 	

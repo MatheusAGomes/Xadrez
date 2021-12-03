@@ -168,14 +168,17 @@ public class Tabuleiro {
 						if(selecionada.branco == true)
 						{
 							this.jogo.tab.jogadasdoBranco = this.jogo.tab.jogadasdoBranco + 1;
+							this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 						}
 						else
 						{
 							this.jogo.tab.jogadasdoPreto = this.jogo.tab.jogadasdoPreto + 1;
+							this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 						}
 										this.selecionada.mover(linha, coluna);
 					this.selecionada.quantidadedemovimento = this.selecionada.quantidadedemovimento + 1;
 					this.addnotab(this.selecionada);
+					this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas);
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
@@ -186,6 +189,7 @@ public class Tabuleiro {
 					//VERIFICACAO DE EMPATE E XEQUE
 					this.Verificar_Xeque();
 					this.Validar_Empate_Por_Peca();
+					
 					}
 					else
 					{

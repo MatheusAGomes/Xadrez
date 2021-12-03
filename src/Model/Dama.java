@@ -29,45 +29,97 @@ public class Dama extends Peca{
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		// TODO Auto-generated method stub
 		
-		
-		for(int j = selecionada.getColuna(),i = selecionada.getLinha();j>=0 && i>=0;i--,j--) {
-			
-			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-			{
-				return true;
+		for(int j = selecionada.getColuna() - 1,i = selecionada.getLinha() - 1;(j<8 && j>=0&&i<8 && i>=0);i--,j--) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+			}
+			else {
+				break;
 			}
 			
 		}
 		
-		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j>=0 && i>=0);i--,j++) {
-			
-			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-			{
-				return true;
+		for(int j = selecionada.getColuna() + 1,i = selecionada.getLinha() - 1;(j<8 && j>=0&&i<8 && i>=0);i--,j++) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+			}
+			else {
+				break;
+			}
+		}
+		for(int j = selecionada.getColuna() + 1,i = selecionada.getLinha() + 1;(j<8 && j>=0&&i<8 && i>=0);i++,j++) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+			}
+			else {
+				break;
 			}
 			
 		}
-		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j++) {
+		for(int j = selecionada.getColuna() - 1,i = selecionada.getLinha() + 1;(j<8 && j>=0&&i<8 && i>=0);i++,j--) {
 			
-			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-			{
-				return true;
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+				{
+					return true;
+				}
+			}
+			else {
+				break;
+			}
+			}
+		
+		
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha() + 1;(j<8 && j>=0&&i<8 && i>=0);i++) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if( j == colunadoquadradoverificado && i == linhadoquadradoverificado ) {
+					return true;
+				}
+			}
+			else {
+				break;
 			}
 			
 		}
-		for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j--) {
-			
-			if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-			{
-				return true;
+		
+		for(int j = selecionada.getColuna(),i = selecionada.getLinha() - 1;(j<8 && j>=0&&i<8 && i>=0);i--) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if( j == colunadoquadradoverificado && i == linhadoquadradoverificado ) {
+					return true;
+				}
 			}
-			
+			else {
+				break;
+			}
 		}
-		if(selecionada.getColuna() == colunadoquadradoverificado) {
-			return true;
+		for(int j = selecionada.getColuna()+1,i = selecionada.getLinha() ;(j<8 && j>=0&&i<8 && i>=0);j++) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if( j == colunadoquadradoverificado && i == linhadoquadradoverificado ) {
+					return true;
+				}
+			}
+			else {
+				break;
+			}
 		}
-		if(selecionada.getLinha() == linhadoquadradoverificado) {
-			return true;
+		for(int j = selecionada.getColuna()-1,i = selecionada.getLinha() ;(j<8 && j>=0&&i<8 && i>=0);j--) {
+			if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+				if( j == colunadoquadradoverificado && i == linhadoquadradoverificado ) {
+					return true;
+				}
+			}
+			else {
+				break;
+			}
 		}
 		
 		return false;
@@ -76,5 +128,16 @@ public class Dama extends Peca{
 	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
 		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
+	@Override
+	public void EscreverMovimento(int numerodejogadas) {
+		// TODO Auto-generated method stub
+		
+		String text = numerodejogadas+"."+"D"+this.linha+this.coluna+"\n";
+		System.out.print(text);
+		Arquivo.Write("ListaDeJogadas.txt",text);
+		
+		
+	}
+	
 
 }

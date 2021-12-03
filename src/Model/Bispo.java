@@ -24,44 +24,63 @@ public class Bispo extends Peca{
 	public String getImagem() {
 		return imagem;
 	}
+	
+	
+	
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		
 		
 			
-			for(int j = selecionada.getColuna(),i = selecionada.getLinha();j>=0 && i>=0;i--,j--) {
-				
-				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-				{
-					return true;
+			for(int j = selecionada.getColuna() - 1,i = selecionada.getLinha() - 1;(j<8 && j>=0&&i<8 && i>=0);i--,j--) {
+				if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+					if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+					{
+						return true;
+					}
+				}
+				else {
+					break;
 				}
 				
 			}
 			
-			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j>=0 && i>=0);i--,j++) {
-				
-				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-				{
-					return true;
+			for(int j = selecionada.getColuna() + 1,i = selecionada.getLinha() - 1;(j<8 && j>=0&&i<8 && i>=0);i--,j++) {
+				if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+					if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+					{
+						return true;
+					}
+				}
+				else {
+					break;
+				}
+			}
+			for(int j = selecionada.getColuna() + 1,i = selecionada.getLinha() + 1;(j<8 && j>=0&&i<8 && i>=0);i++,j++) {
+				if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+					if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+					{
+						return true;
+					}
+				}
+				else {
+					break;
 				}
 				
 			}
-			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j++) {
+			for(int j = selecionada.getColuna() - 1,i = selecionada.getLinha() + 1;(j<8 && j>=0&&i<8 && i>=0);i++,j--) {
 				
-				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-				{
-					return true;
+				if(this.tab.getPeca(i, j) == null || this.tab.getPeca(i, j).branco == !this.branco) {
+					if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
+					{
+						return true;
+					}
 				}
-				
-			}
-			for(int j = selecionada.getColuna(),i = selecionada.getLinha();(j<8 && i<8);i++,j--) {
-				
-				if(i == linhadoquadradoverificado && j == colunadoquadradoverificado)
-				{
-					return true;
+				else {
+					break;
 				}
-				
-			}
+				}
+			
 
 			
 			
@@ -75,6 +94,17 @@ public class Bispo extends Peca{
 	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
 		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
+	@Override
+	public void EscreverMovimento(int numerodejogadas) {
+		// TODO Auto-generated method stub
+		
+		String text = numerodejogadas+"."+"B"+this.linha+this.coluna+"\n";
+		System.out.print(text);
+		Arquivo.Write("ListaDeJogadas.txt",text);
+		
+		
+	}
+	
 	
 
 }

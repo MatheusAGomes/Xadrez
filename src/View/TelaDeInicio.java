@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 
 public class TelaDeInicio extends JFrame {
@@ -43,6 +46,17 @@ public class TelaDeInicio extends JFrame {
 				setVisible(false);
 				Jogo jogo = new Jogo(nome[0],nome[1]);
 				jogo.setVisible(true);
+				//Zerando o arquivo
+				FileWriter arq;
+				try {
+					arq = new FileWriter("ListaDeJogadas.txt");
+					PrintWriter gravaArqvio = new PrintWriter(arq);
+					gravaArqvio.print(" ");
+					gravaArqvio.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				

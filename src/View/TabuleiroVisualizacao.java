@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -19,10 +20,16 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	private Quadrado[][] quadrado;
 	public Boolean finalizado;
 	public Boolean empatado;
+	public Boolean desistir;
 	public int jogadasdoBranco;
 	public int jogadasdoPreto;
+	public int vencedor;
+	public int quantidadedejogadas;
+	//vencedor = 0 BRANCAS
+	//vencedor = 1 PRETAS
+	public Jogo jogo;
 	
-	public TabuleiroVisualizacao(Tabuleiro tabuleiro)
+	public TabuleiroVisualizacao(Tabuleiro tabuleiro,Jogo jogo)
 	{
 		this.quadrado = new Quadrado[8][8];
 		
@@ -30,8 +37,11 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		this.criarTab();
 		this.finalizado = false;
 		this.empatado = false;
-		this.jogadasdoBranco = 20;
-		this.jogadasdoPreto = 20;
+		this.desistir = false;
+		this.jogadasdoBranco = 0;
+		this.jogadasdoPreto = 0;
+		this.quantidadedejogadas = 0;
+		this.jogo = jogo;
 	}
 	
 	
@@ -93,6 +103,26 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	{
 		this.quadrado[quadrado.linha][quadrado.coluna] = quadrado;
 	}
+	public Quadrado getQuadrado(int linha, int coluna)
+	{
+		return this.quadrado[linha][coluna];
+	}
+	public void ProporEmpate()
+	{
+		Object[] options = { "Aceitar", "Recusar" };
+		int resposta  = JOptionPane.showOptionDialog(null,"O jogador adversario está propando empate:","Empate?",
+		          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+		              null, options, options[0]);
+		if(resposta == 0)
+		{
+				this.empatado = true;
+				this.jogo.btnDesistirPreto.setEnabled(false);
+				this.jogo.btnDesistirBranco.setEnabled(false);
+				this.jogo.btnProporBranco.setEnabled(false);
+				this.jogo.btnProporPreto.setEnabled(false);
+		}
+		
+	}
 	
 	
 
@@ -101,8 +131,9 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		Object[] options = { "Voltar ao tabuleiro", "Voltar ao menu" };
 		int resposta;
-		if(this.finalizado == true || this.empatado == true) {
+		if(this.finalizado == true || this.empatado == true || this.desistir == true) {
 			JOptionPane.showMessageDialog(null, "JOGO JA FINALIZADO");
+			
 		}
 		else
 		{
@@ -122,7 +153,11 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 									resposta  = JOptionPane.showOptionDialog(null,"As brancas ganharam !","XEQUE-MATE",
 									          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 									              null, options, options[0]);
-									
+									this.jogo.btnDesistirPreto.setEnabled(false);
+									this.jogo.btnDesistirBranco.setEnabled(false);
+									this.jogo.btnProporBranco.setEnabled(false);
+									this.jogo.btnProporPreto.setEnabled(false);
+									this.vencedor = 0;
 						}
 						else
 						{
@@ -130,6 +165,11 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 									resposta  = JOptionPane.showOptionDialog(null,"As pretas ganharam !","XEQUE-MATE",
 									          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 									              null, options, options[0]);
+									this.jogo.btnDesistirPreto.setEnabled(false);
+									this.jogo.btnDesistirBranco.setEnabled(false);
+									this.jogo.btnProporBranco.setEnabled(false);
+									this.jogo.btnProporPreto.setEnabled(false);
+									this.vencedor = 1;
 						}
 									if(resposta == 1)
 									{
@@ -192,6 +232,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 	
 }

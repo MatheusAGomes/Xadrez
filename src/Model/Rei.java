@@ -60,6 +60,16 @@ public class Rei extends Peca{
 	public Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado) {
 		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
+	@Override
+	public void EscreverMovimento(int numerodejogadas) {
+		// TODO Auto-generated method stub
+		
+		String text = numerodejogadas+"."+"R"+this.linha+this.coluna+"\n";
+		System.out.print(text);
+		Arquivo.Write("ListaDeJogadas.txt",text);
+		
+		
+	}
 	
 
 }
