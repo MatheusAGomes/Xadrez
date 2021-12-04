@@ -5,7 +5,14 @@ import java.awt.Image;
 import View.TabuleiroVisualizacao;
 
 public class Rei extends Peca{
-		
+			public boolean mov1;
+			public boolean mov2;
+			public boolean mov3;
+			public boolean mov4;
+			public boolean mov5;
+			public boolean mov6;
+			public boolean mov7;
+			public boolean mov8;
 	
 
 	public Rei(int linha, int coluna,Boolean cor) {
