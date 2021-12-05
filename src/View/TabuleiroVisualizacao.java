@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+import Model.Arquivo;
 import Model.Peca;
 import Model.Tabuleiro;
 
 public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
-	private Tabuleiro tabuleiro;
+	public Tabuleiro tabuleiro;
 	private Quadrado[][] quadrado;
 	public Boolean finalizado;
 	public Boolean empatado;
@@ -42,6 +43,21 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 		this.jogadasdoPreto = 0;
 		this.quantidadedejogadas = 0;
 		this.jogo = jogo;
+	}
+	
+	public TabuleiroVisualizacao(Tabuleiro tabuleiro)
+	{
+		this.quadrado = new Quadrado[8][8];
+		
+		this.tabuleiro = tabuleiro;
+		this.criarTab();
+		this.finalizado = false;
+		this.empatado = false;
+		this.desistir = false;
+		this.jogadasdoBranco = 0;
+		this.jogadasdoPreto = 0;
+		this.quantidadedejogadas = 0;
+		
 	}
 	
 	
@@ -129,6 +145,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		Arquivo escritaderesultado = new Arquivo();
 		Object[] options = { "Voltar ao tabuleiro", "Voltar ao menu" };
 		int resposta;
 		if(this.finalizado == true || this.empatado == true || this.desistir == true) {
@@ -141,8 +158,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 			Quadrado quadrado = (Quadrado) e.getSource();	
 			this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
 			this.criarTab();
-			System.out.printf("\n %d ",this.jogadasdoBranco);
-			System.out.printf(" %d \n",this.jogadasdoPreto);
+			//System.out.printf("\n %d ",this.jogadasdoBranco);
+			//System.out.printf(" %d \n",this.jogadasdoPreto);
 			//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
 			if(this.finalizado == true )
 				{
@@ -158,6 +175,9 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 									this.jogo.btnProporBranco.setEnabled(false);
 									this.jogo.btnProporPreto.setEnabled(false);
 									this.vencedor = 0;
+									
+									escritaderesultado.Write("ListaDeJogadas.txt","Brancas Venceram");
+									
 						}
 						else
 						{
@@ -170,6 +190,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 									this.jogo.btnProporBranco.setEnabled(false);
 									this.jogo.btnProporPreto.setEnabled(false);
 									this.vencedor = 1;
+									
+									escritaderesultado.Write("ListaDeJogadas.txt","Pretas Venceram");
 						}
 									if(resposta == 1)
 									{
@@ -189,6 +211,8 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 								          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 								              null, options, options[0]);
 								System.out.print(resposta);
+								
+								escritaderesultado.Write("ListaDeJogadas.txt","Empate");
 							
 							if(resposta == 1)
 							{

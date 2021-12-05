@@ -89,7 +89,7 @@ public abstract class Peca {
 	public abstract Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
 	public abstract Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
 	
-	public abstract  void EscreverMovimento(int numerodejogadas);
+	public abstract  void EscreverMovimento(int numerodejogadas,int linhaanterior,int colunaanterior);
 		
 		
 	

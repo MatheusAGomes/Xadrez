@@ -95,6 +95,83 @@ public class Tabuleiro {
 		
 	}
 	
+	public Tabuleiro()
+	{
+		this.vezdobranco = true;
+		this.peca = new Peca[8][8];
+		
+			//posicionando pecas
+		//peoes
+		//brancos
+		Peao peao1B = new Peao(6,0,true);
+		this.addnotab(peao1B);
+		Peao peao2B = new Peao(6,1,true);
+		this.addnotab(peao2B);
+		Peao peao3B = new Peao(6,2,true);
+		this.addnotab(peao3B);
+		Peao peao4B = new Peao(6,3,true);
+		this.addnotab(peao4B);
+		Peao peao5B = new Peao(6,4,true);
+		this.addnotab(peao5B);
+		Peao peao6B = new Peao(6,5,true);
+		this.addnotab(peao6B);
+		Peao peao7B = new Peao(6,6,true);
+		this.addnotab(peao7B);
+		Peao peao8B = new Peao(6,7,true);
+		this.addnotab(peao8B);
+		//Pretos
+		Peao peao1P = new Peao(1,0,false);
+		this.addnotab(peao1P);
+		Peao peao2P = new Peao(1,1,false);
+		this.addnotab(peao2P);
+		Peao peao3P = new Peao(1,2,false);
+		this.addnotab(peao3P);
+		Peao peao4P = new Peao(1,3,false);
+		this.addnotab(peao4P);
+		Peao peao5P = new Peao(1,4,false);
+		this.addnotab(peao5P);
+		Peao peao6P = new Peao(1,5,false);
+		this.addnotab(peao6P);
+		Peao peao7P = new Peao(1,6,false);
+		this.addnotab(peao7P);
+		Peao peao8P = new Peao(1,7,false);
+		this.addnotab(peao8P);
+		
+		//Torres
+		//Brancas
+		Torre Torre1B = new Torre(7,0,true);this.addnotab(Torre1B);
+		Torre Torre2B = new Torre(7,7,true);this.addnotab(Torre2B);
+		//Preta
+		Torre Torre1P = new Torre(0,0,false);this.addnotab(Torre1P);
+		Torre Torre2P = new Torre(0,7,false);this.addnotab(Torre2P);
+		
+		// Cavalos
+		// Brancos
+		Cavalo Cabalo1B = new Cavalo(7,1,true);this.addnotab(Cabalo1B);
+		Cavalo Cabalo2B = new Cavalo(7,6,true);this.addnotab(Cabalo2B);
+		// Preto
+		Cavalo Cabalo1P = new Cavalo(0,1,false);this.addnotab(Cabalo1P);
+		Cavalo Cabalo2P = new Cavalo(0,6,false);this.addnotab(Cabalo2P);
+		
+		//Bispo
+		//Branco
+		Bispo Bispo1B = new Bispo(7,2,true);this.addnotab(Bispo1B);
+		Bispo Bispo2B = new Bispo(7,5,true);this.addnotab(Bispo2B);
+		//Preto
+		Bispo Bispo1P = new Bispo(0,2,false);this.addnotab(Bispo1P);
+		Bispo Bispo2P = new Bispo(0,5,false);this.addnotab(Bispo2P);
+		
+		//Dama
+		Dama DamaB= new Dama(7,3,true);this.addnotab(DamaB);
+		Dama DamaP = new Dama(0,3,false);this.addnotab(DamaP);
+		//Rei
+		Rei ReiB = new Rei(7,4,true);this.addnotab(ReiB);
+		Rei ReiP = new Rei(0,4,false);this.addnotab(ReiP);
+		
+		
+	}
+	
+	
 	
 	public Peca getPeca(int linha, int coluna)
 	{
@@ -113,6 +190,30 @@ public class Tabuleiro {
 			this.vezdobranco = !var;
 		
 		
+		
+	}
+	
+	public void reproduzirjogada(int i)
+	{
+
+		Arquivo leituradoArquivo = new Arquivo();
+		char[] vetor = leituradoArquivo.Read(i);
+		
+		if(vetor != null) {
+		int linhaanterior = Integer.parseInt(String.valueOf(vetor[3]));
+		int colunaanterior = Integer.parseInt(String.valueOf(vetor[4]));
+		int proximalinha = Integer.parseInt(String.valueOf(vetor[5]));
+		int proximacoluna = Integer.parseInt(String.valueOf(vetor[6]));
+		this.selecionada = getPeca(linhaanterior, colunaanterior);
+		this.selecionada.mover(proximalinha, proximacoluna);
+		this.addnotab(this.selecionada);
+		this.peca[linhaanterior][colunaanterior] = null;
+		this.selecionada = null;
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Jogo finalizado");
+		}
 		
 	}
 
@@ -144,7 +245,7 @@ public class Tabuleiro {
 			
 			}
 			else {
-				if(peca == null)
+				if(peca == null && this.jogo.tab.finalizado == false)
 				{
 					
 					//caso haja uma peca selecionada e o click é em uma posicao sem peca ou peca adversaria ocorre o movimento(retira a peca da casa e coloca em outra)
@@ -178,18 +279,22 @@ public class Tabuleiro {
 										this.selecionada.mover(linha, coluna);
 					this.selecionada.quantidadedemovimento = this.selecionada.quantidadedemovimento + 1;
 					this.addnotab(this.selecionada);
-					this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas);
+					this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas,antigalinha,antigaColuna);
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
-					
+					this.jogo.tab.criarTab();
 					//trocar a vez
 					this.trocarAvez(this.vezdobranco);
 					this.jogo.trocarvez(vezdobranco);
 					//VERIFICACAO DE EMPATE E XEQUE
-					this.Verificar_Xeque();
-					this.Validar_Empate_Por_Peca();
-					this.ValidarEmpatePorAfogamento();
+					
+						this.Verificar_Xeque();
+						this.Validar_Empate_Por_Peca();
+						this.ValidarEmpatePorAfogamento();
+					
+					
+					
 					
 					}
 					else
@@ -206,6 +311,7 @@ public class Tabuleiro {
 							int antigaColuna = this.selecionada.coluna;
 							this.selecionada.mover(linha, coluna);
 							this.addnotab(this.selecionada);
+							this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas,antigalinha,antigaColuna);
 							this.peca[antigalinha][antigaColuna] = null;
 							this.selecionada.selecionada = false;
 							this.selecionada = null;
@@ -215,8 +321,8 @@ public class Tabuleiro {
 							
 							
 							//eliminacao da peca
-							
-							this.ValidarVitoria(peca.id);
+							this.jogo.tab.criarTab();
+							this.ValidarVitoria(peca.id,this.vezdobranco);
 							
 							
 							
@@ -249,19 +355,20 @@ public class Tabuleiro {
 					JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
 					}
 				}
-				
+				this.jogo.tab.criarTab();
 				}
 			}
 		
 	}
 	
 	
-	public void ValidarVitoria(int id){
+	public void ValidarVitoria(int id,boolean vez){
 		
 		if(id == 5)
 		{
 			
 				this.jogo.tab.finalizado = true;
+				
 				
 			
 		}
@@ -304,7 +411,7 @@ public class Tabuleiro {
 	public void ValidarEmpatePorAfogamento()
 	{
 		
-			
+		Arquivo escritaderesultado = new Arquivo();
 		int contadordepossibilidadesB=0;
 		int contadordepossibilidadesP=0;
 			
@@ -639,6 +746,7 @@ public class Tabuleiro {
 				}
 			}
 			
+			try {
 			if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha >= 1 && this.acharReiPreto().linha <= 6 )
 			{
 				
@@ -698,6 +806,10 @@ public class Tabuleiro {
 				System.out.printf("\n %d 8p",contadordepossibilidadesP);
 
 			}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+			}
 			
 			
 			
@@ -713,6 +825,7 @@ public class Tabuleiro {
 			if(contadordepossibilidadesB >= 8)
 			{
 				this.jogo.tab.empatado = true;
+				
 			}
 			if(contadordepossibilidadesP >= 8)
 			{
@@ -730,7 +843,7 @@ public class Tabuleiro {
 	public void Validar_Empate_Por_Peca()
 	{
 		
-		
+		Arquivo escritaderesultado = new Arquivo();
 		if(this.jogo.QuantidadeDePecasEliminadasPretas == 15 && this.jogo.QuantidadeDePecasEliminadasBrancas == 15){
 			this.jogo.tab.empatado = true;
 		}

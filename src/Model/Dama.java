@@ -129,10 +129,10 @@ public class Dama extends Peca{
 		return this.mostrarquadrado(selecionada, linhadoquadradoverificado, colunadoquadradoverificado);
 	}
 	@Override
-	public void EscreverMovimento(int numerodejogadas) {
+	public void EscreverMovimento(int numerodejogadas,int linhaanterior,int colunaanterior) {
 		// TODO Auto-generated method stub
 		
-		String text = numerodejogadas+"."+"D"+this.linha+this.coluna+"\n";
+		String text = numerodejogadas+"."+"D"+linhaanterior+colunaanterior+this.linha+this.coluna+"\n";
 		System.out.print(text);
 		Arquivo.Write("ListaDeJogadas.txt",text);
 		

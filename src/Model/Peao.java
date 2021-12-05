@@ -86,13 +86,13 @@ public class Peao extends Peca{
 			if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() - 1] != null)  {
 				return true;
 			}
-			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() - 1] != null)  {
+			if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  - 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() + 1] != null)  {
 				return true;
 			}
 		}
 			else
 			{
-				if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() - 1][selecionada.getColuna() + 1] != null)  {
+				if(selecionada.getColuna() - 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() - 1] != null)  {
 				return true;
 				}
 				if(selecionada.getColuna() + 1 == colunadoquadradoverificado && selecionada.getLinha()  + 1  == linhadoquadradoverificado && this.tab.peca[selecionada.getLinha() + 1][selecionada.getColuna() + 1] != null)  {
@@ -106,10 +106,10 @@ public class Peao extends Peca{
 
 
 	@Override
-	public void EscreverMovimento(int numerodejogadas) {
+	public void EscreverMovimento(int numerodejogadas,int linhaanterior,int colunaanterior) {
 		// TODO Auto-generated method stub
 		
-		String text = numerodejogadas+"."+this.linha+this.coluna+"\n";
+		String text = numerodejogadas+"."+" "+linhaanterior+colunaanterior+this.linha+this.coluna+"\n";
 		System.out.print(text);
 		Arquivo.Write("ListaDeJogadas.txt",text);
 		
