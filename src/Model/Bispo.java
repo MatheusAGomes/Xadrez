@@ -12,11 +12,11 @@ public class Bispo extends Peca{
 			super(linha,  coluna, cor);
 			if(cor == false)
 			{
-			this.imagem = "Bispo(P)";
+			this.imagem = "/View/Imagens/BispoPreto.png";
 			}
 			else
 			{
-			this.imagem = "Bispo(B)";
+			this.imagem = "/View/Imagens/BispoBranco.png";
 			}
 			this.id = 3;
 			this.quantidadedemovimento = 0;

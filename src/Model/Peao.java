@@ -15,11 +15,11 @@ public class Peao extends Peca{
 			super(linha,coluna,cor);
 			if(cor == false)
 			{
-			this.imagem = "Peao(P)";
+			this.imagem = "/View/Imagens/PeaoPreto.png";
 			}
 			else
 			{
-			this.imagem = "Peao(B)";
+			this.imagem = "/View/Imagens/PeaoBranco.png";
 			}
 			this.id = 1;
 			this.quantidadedemovimento = 0;
