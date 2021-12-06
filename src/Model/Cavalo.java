@@ -13,11 +13,11 @@ public class Cavalo extends Peca{
 			this.branco = cor;
 			if(cor == false)
 			{
-			this.imagem = "Cavalo(P)";
+			this.imagem = "/View/Imagens/CavaloPreto.png";
 			}
 			else
 			{
-			this.imagem = "Cavalo(B)";
+			this.imagem = "/View/Imagens/CavaloBranco.png";
 			}
 			this.id = 4;
 			this.quantidadedemovimento = 0;

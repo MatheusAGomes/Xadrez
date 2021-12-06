@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -14,9 +16,8 @@ public class PecaVisualizada extends JLabel {
 		public PecaVisualizada(Peca peca)
 		{
 		 this.pecas = peca;
-		 
-		 this.setText(this.pecas.imagem);
-		
+		 	ImageIcon imagem = new ImageIcon(getClass().getResource(this.pecas.getImagem()));
+			this.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
 		
 			 
 		

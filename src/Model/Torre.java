@@ -11,11 +11,11 @@ public class Torre extends Peca{
 			super(linha,  coluna, cor);
 			if(cor == false)
 			{
-			this.imagem = "Torre(P)";
+			this.imagem = "/View/Imagens/TorrePreta.png";
 			}
 			else
 			{
-			this.imagem = "Torre(B)";
+			this.imagem = "/View/Imagens/TorreBranca.png";
 			}
 			this.id = 2;
 			this.quantidadedemovimento = 0;

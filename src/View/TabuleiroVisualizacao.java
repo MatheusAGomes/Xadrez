@@ -93,7 +93,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 				}
 				else
 				{
-					this.quadrado[i][j].setBackground(Color.BLACK);
+					this.quadrado[i][j].setBackground(Color.GRAY);
 				//	quadrado.setBounds(i*50,j*50,50,50);
 
 				}

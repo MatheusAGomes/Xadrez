@@ -12,11 +12,11 @@ public class Dama extends Peca{
 			super(linha,  coluna, cor);
 			if(cor == false)
 			{
-			this.imagem = "Dama(P)";
+			this.imagem = "/View/Imagens/DamaPreta.png";
 			}
 			else
 			{
-			this.imagem = "Dama(B)";
+			this.imagem = "/View/Imagens/DamaBranca.png";
 			}
 			this.id = 4;
 			this.quantidadedemovimento = 0;
