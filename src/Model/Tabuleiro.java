@@ -93,6 +93,7 @@ public class Tabuleiro {
 		Rei ReiP = new Rei(0,4,false);this.addnotab(ReiP);
 		
 		
+		
 	}
 	
 	public Tabuleiro()
@@ -200,10 +201,11 @@ public class Tabuleiro {
 		char[] vetor = leituradoArquivo.Read(i);
 		
 		if(vetor != null) {
-		int linhaanterior = Integer.parseInt(String.valueOf(vetor[3]));
-		int colunaanterior = Integer.parseInt(String.valueOf(vetor[4]));
-		int proximalinha = Integer.parseInt(String.valueOf(vetor[5]));
-		int proximacoluna = Integer.parseInt(String.valueOf(vetor[6]));
+		int tamanhodochar = vetor.length;
+		int linhaanterior = Integer.parseInt(String.valueOf(vetor[tamanhodochar - 4]));
+		int colunaanterior = Integer.parseInt(String.valueOf(vetor[tamanhodochar - 3]));
+		int proximalinha = Integer.parseInt(String.valueOf(vetor[tamanhodochar - 2]));
+		int proximacoluna = Integer.parseInt(String.valueOf(vetor[tamanhodochar - 1]));
 		this.selecionada = getPeca(linhaanterior, colunaanterior);
 		this.selecionada.mover(proximalinha, proximacoluna);
 		this.addnotab(this.selecionada);
@@ -269,17 +271,16 @@ public class Tabuleiro {
 						if(selecionada.branco == true)
 						{
 							this.jogo.tab.jogadasdoBranco = this.jogo.tab.jogadasdoBranco + 1;
-							this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 						}
 						else
 						{
 							this.jogo.tab.jogadasdoPreto = this.jogo.tab.jogadasdoPreto + 1;
-							this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 						}
-										this.selecionada.mover(linha, coluna);
+					this.selecionada.mover(linha, coluna);
 					this.selecionada.quantidadedemovimento = this.selecionada.quantidadedemovimento + 1;
 					this.addnotab(this.selecionada);
 					this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas,antigalinha,antigaColuna);
+					this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 					this.peca[antigalinha][antigaColuna] = null;
 					this.selecionada.selecionada = false;
 					this.selecionada = null;
@@ -292,7 +293,8 @@ public class Tabuleiro {
 						this.Verificar_Xeque();
 						this.Validar_Empate_Por_Peca();
 						this.ValidarEmpatePorAfogamento();
-					
+						
+
 					
 					
 					
@@ -312,6 +314,7 @@ public class Tabuleiro {
 							this.selecionada.mover(linha, coluna);
 							this.addnotab(this.selecionada);
 							this.selecionada.EscreverMovimento(this.jogo.tab.quantidadedejogadas,antigalinha,antigaColuna);
+							this.jogo.tab.quantidadedejogadas = this.jogo.tab.quantidadedejogadas + 1;
 							this.peca[antigalinha][antigaColuna] = null;
 							this.selecionada.selecionada = false;
 							this.selecionada = null;
@@ -842,8 +845,8 @@ public class Tabuleiro {
 	
 	public void Validar_Empate_Por_Peca()
 	{
+		System.out.print(this.jogo.QuantidadeDePecasEliminadasPretas);
 		
-		Arquivo escritaderesultado = new Arquivo();
 		if(this.jogo.QuantidadeDePecasEliminadasPretas == 15 && this.jogo.QuantidadeDePecasEliminadasBrancas == 15){
 			this.jogo.tab.empatado = true;
 		}
