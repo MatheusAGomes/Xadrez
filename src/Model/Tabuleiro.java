@@ -247,6 +247,7 @@ public class Tabuleiro {
 			
 			}
 			else {
+				try {
 				if(peca == null && this.jogo.tab.finalizado == false)
 				{
 					
@@ -325,6 +326,7 @@ public class Tabuleiro {
 							
 							//eliminacao da peca
 							this.jogo.tab.criarTab();
+							System.out.print(peca.id);
 							this.ValidarVitoria(peca.id,this.vezdobranco);
 							
 							
@@ -358,6 +360,9 @@ public class Tabuleiro {
 					JOptionPane.showMessageDialog(null, "Voce nao pode fazer este movimento");
 					}
 				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
 				this.jogo.tab.criarTab();
 				}
 			}
@@ -371,9 +376,8 @@ public class Tabuleiro {
 		{
 			
 				this.jogo.tab.finalizado = true;
+				System.out.print(this.jogo.tab.finalizado);
 				
-				
-			
 		}
 			
 			
@@ -443,7 +447,7 @@ public class Tabuleiro {
 							
 								if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna))	
 								{
-									System.out.println("1");
+								//	System.out.println("1");
 									
 									acharReiBranco().setP7(true);
 									
@@ -454,7 +458,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna - 1))
 							{
 								// + -
-								System.out.println("2");
+							//	System.out.println("2");
 
 								acharReiBranco().setP6(true);
 
@@ -464,7 +468,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha + 1,this.acharReiBranco().coluna + 1))
 							{
 								// + +
-								System.out.println("3");
+								//System.out.println("3");
 
 								acharReiBranco().setP8(true);
 
@@ -477,7 +481,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha,this.acharReiBranco().coluna - 1))
 							{
 								// = - 
-								System.out.println("4");
+							//	System.out.println("4");
 
 								acharReiBranco().setP4(true);
 
@@ -488,7 +492,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha,this.acharReiBranco().coluna + 1))
 							{
 								// = +
-								System.out.println("5");
+								//System.out.println("5");
 
 								acharReiBranco().setP5(true);
 
@@ -501,7 +505,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna - 1))
 							{
 								// - -
-								System.out.println("6");
+							//	System.out.println("6");
 
 								acharReiBranco().setP1(true);
 
@@ -511,7 +515,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna + 1))
 							{
 								// - +
-								System.out.println("7");
+							//	System.out.println("7");
 
 								acharReiBranco().setP3(true);
 
@@ -521,7 +525,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiBranco().linha - 1,this.acharReiBranco().coluna))
 							{
 								// - =
-								System.out.println("8");
+							//	System.out.println("8");
 
 								acharReiBranco().setP2(true);
 
@@ -551,7 +555,7 @@ public class Tabuleiro {
 			
 			if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha >= 1 && this.acharReiBranco().linha <= 6 )
 			{
-				System.out.println("8");
+			//	System.out.println("8");
 				acharReiBranco().setP1(true);
 				acharReiBranco().setP4(true);
 				acharReiBranco().setP6(true);
@@ -560,7 +564,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha >= 1 && this.acharReiBranco().linha <= 6 )
 			{
-				System.out.println("9");
+			//	System.out.println("9");
 				acharReiBranco().setP3(true);
 				acharReiBranco().setP5(true);
 				acharReiBranco().setP8(true);
@@ -569,7 +573,7 @@ public class Tabuleiro {
 			//corner
 			if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha == 0)
 			{
-				System.out.println("10");
+			//	System.out.println("10");
 
 				acharReiBranco().setP6(true);
 				acharReiBranco().setP4(true);
@@ -580,7 +584,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha == 7)
 			{
-				System.out.println("11");
+			//	System.out.println("11");
 
 				acharReiBranco().setP3(true);
 				acharReiBranco().setP5(true);
@@ -591,7 +595,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiBranco().coluna == 0 && this.acharReiBranco().linha == 7)
 			{
-				System.out.println("12");
+			//	System.out.println("12");
 
 				acharReiBranco().setP1(true);
 				acharReiBranco().setP4(true);
@@ -602,7 +606,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiBranco().coluna == 7 && this.acharReiBranco().linha == 0)
 			{
-				System.out.println("13");
+			//	System.out.println("13");
 
 				acharReiBranco().setP1(true);
 				acharReiBranco().setP2(true);
@@ -614,7 +618,7 @@ public class Tabuleiro {
 			
 			if(this.acharReiBranco().linha == 0 && this.acharReiBranco().coluna >= 1 && this.acharReiBranco().coluna <= 6 )
 			{
-				System.out.println("14");
+			//	System.out.println("14");
 
 				acharReiBranco().setP1(true);
 				acharReiBranco().setP2(true);
@@ -623,7 +627,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiBranco().linha == 7 && this.acharReiBranco().coluna >= 1 && this.acharReiBranco().coluna <= 6 )
 			{
-				System.out.println("15");
+			//	System.out.println("15");
 
 				acharReiBranco().setP6(true);
 				acharReiBranco().setP7(true);
@@ -694,7 +698,7 @@ public class Tabuleiro {
 							
 								if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna))	
 								{
-									System.out.println("101");
+			//						System.out.println("101");
 
 									acharReiPreto().setP7(true);
 									// + = 
@@ -705,7 +709,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna - 1))
 							{
 								// + -
-								System.out.println("102");
+			//					System.out.println("102");
 
 								acharReiPreto().setP6(true);
 
@@ -715,7 +719,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha + 1,this.acharReiPreto().coluna + 1))
 							{
 								// + +
-								System.out.println("103");
+				//				System.out.println("103");
 
 								acharReiPreto().setP8(true);
 
@@ -728,8 +732,8 @@ public class Tabuleiro {
 							if(this.acharReiPreto().coluna - 1 >=0) {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha,this.acharReiPreto().coluna - 1))
 							{
-								// = - 
-								System.out.println("104");
+				//				// = - 
+				//				System.out.println("104");
 
 								acharReiPreto().setP4(true);
 
@@ -740,7 +744,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha,this.acharReiPreto().coluna + 1))
 							{
 								// = +
-								System.out.println("105");
+				//				System.out.println("105");
 
 								acharReiPreto().setP5(true);
 
@@ -753,7 +757,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna - 1))
 							{
 								// - -
-								System.out.println("106");
+				//				System.out.println("106");
 
 								acharReiPreto().setP1(true);
 
@@ -764,7 +768,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna + 1))
 							{
 								// - +
-								System.out.println("107");
+				//				System.out.println("107");
 
 								acharReiPreto().setP3(true);
 
@@ -775,7 +779,7 @@ public class Tabuleiro {
 							if(this.peca[i][j].mostrarquadrado(this.peca[i][j],this.acharReiPreto().linha - 1,this.acharReiPreto().coluna))
 							{
 								// - =
-								System.out.println("108");
+				//				System.out.println("108");
 
 								acharReiPreto().setP2(true);
 
@@ -807,7 +811,7 @@ public class Tabuleiro {
 			try {
 			if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha >= 1 && this.acharReiPreto().linha <= 6 )
 			{
-				System.out.println("109");
+			//	System.out.println("109");
 
 				acharReiPreto().setP1(true);
 				acharReiPreto().setP4(true);
@@ -817,7 +821,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha >= 1 && this.acharReiPreto().linha <= 6 )
 			{
-				System.out.println("110");
+			//	System.out.println("110");
 
 				acharReiPreto().setP3(true);
 				acharReiPreto().setP5(true);
@@ -827,7 +831,7 @@ public class Tabuleiro {
 			//corner
 			if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha == 0)
 			{
-				System.out.println("111");
+			//	System.out.println("111");
 
 				acharReiPreto().setP6(true);
 				acharReiPreto().setP4(true);
@@ -838,7 +842,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha == 7)
 			{
-				System.out.println("112");
+				//System.out.println("112");
 
 				acharReiPreto().setP3(true);
 				acharReiPreto().setP5(true);
@@ -851,7 +855,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiPreto().coluna == 0 && this.acharReiPreto().linha == 7)
 			{
-				System.out.println("113");
+				//System.out.println("113");
 
 				acharReiPreto().setP1(true);
 				acharReiPreto().setP4(true);
@@ -862,7 +866,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiPreto().coluna == 7 && this.acharReiPreto().linha == 0)
 			{
-				System.out.println("114");
+			//	System.out.println("114");
 
 				acharReiPreto().setP1(true);
 				acharReiPreto().setP2(true);
@@ -874,7 +878,7 @@ public class Tabuleiro {
 			
 			if(this.acharReiPreto().linha == 0 && this.acharReiPreto().coluna >= 1 && this.acharReiPreto().coluna <= 6 )
 			{
-				System.out.println("115");
+				//System.out.println("115");
 
 				acharReiPreto().setP1(true);
 				acharReiPreto().setP2(true);
@@ -882,7 +886,7 @@ public class Tabuleiro {
 			}
 			if(this.acharReiPreto().linha == 7 && this.acharReiPreto().coluna >= 1 && this.acharReiPreto().coluna <= 6 )
 			{
-				System.out.println("116");
+				//System.out.println("116");
 
 				acharReiPreto().setP6(true);
 				acharReiPreto().setP7(true);
@@ -903,18 +907,18 @@ public class Tabuleiro {
 			
 			
 			
-			System.out.printf("\n \n \n \n \n \n");
+		//	System.out.printf("\n \n \n \n \n \n");
 			
 			try{
 			if(acharReiBranco().Vempate() == true)
 			{
-				System.out.printf("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+				
 				this.jogo.tab.empatado = true;
 				
 			}
 			if(acharReiPreto().Vempate() == true)
 			{
-				System.out.printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				
 				this.jogo.tab.empatado = true;
 			}
 			}
@@ -934,7 +938,7 @@ public class Tabuleiro {
 	{
 		
 		if(this.jogo.QuantidadeDePecasEliminadasPretas == 15 && this.jogo.QuantidadeDePecasEliminadasBrancas == 15){
-			System.out.printf("SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+			
 			this.jogo.tab.empatado = true;
 		}
 		
@@ -1035,7 +1039,7 @@ public class Tabuleiro {
 					}
 					
 				}
-				System.out.print(quantidadedepecas);
+				//System.out.print(quantidadedepecas);
 			}
 			
 			if(quantidadedepecas == 1 && reip == 1)return true;
@@ -1044,7 +1048,7 @@ public class Tabuleiro {
 		}
 		
 		
-		System.out.println(quantidadedepecas);
+		//System.out.println(quantidadedepecas);
 		
 		
 		return false;

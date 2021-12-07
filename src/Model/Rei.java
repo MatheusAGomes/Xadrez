@@ -94,7 +94,7 @@ public class Rei extends Peca{
 		// TODO Auto-generated method stub
 		
 		String text = numerodejogadas+"."+"R"+linhaanterior+colunaanterior+this.linha+this.coluna+"\n";
-		System.out.print(text);
+		//System.out.print(text);
 		Arquivo.Write("ListaDeJogadas.txt",text);
 		
 		
@@ -136,16 +136,7 @@ public class Rei extends Peca{
 	@Override
 	public boolean Vempate() {
 		
-		System.out.println(p1);
-		System.out.println(p2);
-		System.out.println(p3);
-		System.out.println(p4);
-		System.out.println(p5);
-		System.out.println(p6);
-		System.out.println(p7);
-		System.out.println(p8);
-		System.out.println();
-
+		
 
 
 		if(this.p1 == true && this.p2 == true && this.p3== true && this.p4== true && this.p5== true && this.p6== true && this.p7== true && this.p8 == true)
