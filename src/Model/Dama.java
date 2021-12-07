@@ -138,6 +138,9 @@ public class Dama extends Peca{
 		
 		
 	}
-	
+	@Override
+	public void resetarreiafogado() {
+		
+	}
 
 }

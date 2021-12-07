@@ -29,6 +29,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	//vencedor = 0 BRANCAS
 	//vencedor = 1 PRETAS
 	public Jogo jogo;
+	Arquivo escritaderesultado = new Arquivo();
 	
 	public TabuleiroVisualizacao(Tabuleiro tabuleiro,Jogo jogo)
 	{
@@ -126,7 +127,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 	public void ProporEmpate()
 	{
 		Object[] options = { "Aceitar", "Recusar" };
-		int resposta  = JOptionPane.showOptionDialog(null,"O jogador adversario está propando empate:","Empate?",
+		int resposta  = JOptionPane.showOptionDialog(null,"O jogador adversario esta propando empate:","Empate?",
 		          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 		              null, options, options[0]);
 		if(resposta == 0)
@@ -136,13 +137,12 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 				this.jogo.btnDesistirBranco.setEnabled(false);
 				this.jogo.btnProporBranco.setEnabled(false);
 				this.jogo.btnProporPreto.setEnabled(false);
+				escritaderesultado.Write("ListaDeJogadas.txt","Empate");
+
 		}
 		
 	}
 	
-	
-
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Arquivo escritaderesultado = new Arquivo();
@@ -158,8 +158,7 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 			Quadrado quadrado = (Quadrado) e.getSource();	
 			this.tabuleiro.jogar(quadrado.linha,quadrado.coluna);
 			this.criarTab();
-			//System.out.printf("\n %d ",this.jogadasdoBranco);
-			//System.out.printf(" %d \n",this.jogadasdoPreto);
+			
 			//caso dentro da movimentacao ocorra a o mate entao o tabuleiro sera finalizado
 			if(this.finalizado == true )
 				{
@@ -210,7 +209,6 @@ public class TabuleiroVisualizacao extends JPanel implements MouseListener {
 								resposta  = JOptionPane.showOptionDialog(null,"Jogo empatado !","EMPATE",
 								          JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 								              null, options, options[0]);
-								System.out.print(resposta);
 								
 								escritaderesultado.Write("ListaDeJogadas.txt","Empate");
 							

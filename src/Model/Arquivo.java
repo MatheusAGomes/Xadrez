@@ -21,7 +21,6 @@ public class Arquivo {
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.print(e);
 			return false;
 		}
 		
@@ -40,7 +39,6 @@ public class Arquivo {
 				line = br.readLine();
 				
 			}
-			System.out.printf("\n %s \n",line);
 
 			if(line != null)
 			{
