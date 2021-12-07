@@ -5,6 +5,15 @@ import java.awt.Image;
 import View.TabuleiroVisualizacao;
 
 public class Rei extends Peca{
+			 public boolean p1;
+			 public boolean p2;
+			 public boolean p3;
+			 public boolean p4;
+			 public boolean p5;
+		
+			public boolean p6;
+			 public boolean p7;
+			 public boolean p8;
 			
 	
 
@@ -21,6 +30,26 @@ public class Rei extends Peca{
 			}
 			this.id = 5;
 			this.quantidadedemovimento = 0;
+			 this.p1 = false;
+			 this.p2 = false;
+			 this.p3 = false;
+			 this.p4 = false;
+			 this.p5 = false;
+			 this.p6 = false;
+			 this.p7 = false;
+			 this.p8 = false;
+	}
+	
+	@Override
+	public void resetarreiafogado() {
+		 this.p1 = false;
+		 this.p2 = false;
+		 this.p3 = false;
+		 this.p4 = false;
+		 this.p5 = false;
+		 this.p6 = false;
+		 this.p7 = false;
+		 this.p8 = false;
 	}
 	public String getImagem() {
 		return imagem;
@@ -70,6 +99,66 @@ public class Rei extends Peca{
 		
 		
 	}
+	@Override
+	 public void setP1(boolean p1) {
+			this.p1 = p1;
+		}
 	
+	@Override
+		public void setP2(boolean p2) {
+			this.p2 = p2;
+		}
+	@Override
+		public void setP3(boolean p3) {
+			this.p3 = p3;
+		}
+	@Override
+		public void setP4(boolean p4) {
+			this.p4 = p4;
+		}
+	@Override
+		public void setP5(boolean p5) {
+			this.p5 = p5;
+		}
+	@Override
+		public void setP6(boolean p6) {
+			this.p6 = p6;
+		}
+	@Override
+		public void setP7(boolean p7) {
+			this.p7 = p7;
+		}
+	@Override
+		public void setP8(boolean p8) {
+			this.p8 = p8;
+		}
+	
+	@Override
+	public boolean Vempate() {
+		
+		System.out.println(p1);
+		System.out.println(p2);
+		System.out.println(p3);
+		System.out.println(p4);
+		System.out.println(p5);
+		System.out.println(p6);
+		System.out.println(p7);
+		System.out.println(p8);
+		System.out.println();
 
-}
+
+
+		if(this.p1 == true && this.p2 == true && this.p3== true && this.p4== true && this.p5== true && this.p6== true && this.p7== true && this.p8 == true)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	}
+
+

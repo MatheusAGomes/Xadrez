@@ -24,7 +24,9 @@ public class Bispo extends Peca{
 	public String getImagem() {
 		return imagem;
 	}
-	
+	public void resetarreiafogado() {
+		
+	}
 	
 	
 	@Override

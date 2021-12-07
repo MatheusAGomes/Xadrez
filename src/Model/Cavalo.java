@@ -25,6 +25,7 @@ public class Cavalo extends Peca{
 	public String getImagem() {
 		return imagem;
 	}
+	
 	@Override
 	public Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado){
 		
@@ -73,6 +74,9 @@ public class Cavalo extends Peca{
 		Arquivo.Write("ListaDeJogadas.txt",text);
 		
 		
+	}
+	@Override
+	public void resetarreiafogado() {
 	}
 	
 

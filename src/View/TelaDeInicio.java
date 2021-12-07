@@ -83,11 +83,11 @@ public class TelaDeInicio extends JFrame {
 				
 				//Zerando o arquivo
 				FileWriter arq;
-				System.out.println(Calendar.getInstance().get(Calendar.YEAR));
+			//	System.out.println(Calendar.getInstance().get(Calendar.YEAR));
 				//mes
 				 int numero  = Calendar.getInstance().get(Calendar.MONTH) + 1;
-				System.out.println(numero);
-				System.out.println(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+			//	System.out.println(numero);
+			//	System.out.println(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 				try {
 					arq = new FileWriter("ListaDeJogadas.txt");
 					PrintWriter gravaArqvio = new PrintWriter(arq);

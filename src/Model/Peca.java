@@ -86,10 +86,33 @@ public abstract class Peca {
 		
 		
 	}
+	
+	
 	public abstract Boolean mostrarquadrado(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
 	public abstract Boolean MostrarComida(Peca selecionada, int linhadoquadradoverificado, int colunadoquadradoverificado);
+	public abstract void resetarreiafogado();
 	
 	public abstract  void EscreverMovimento(int numerodejogadas,int linhaanterior,int colunaanterior);
+	public void setP1(boolean p1) {	
+	}
+	public void setP2(boolean p2) {
+
+	}
+	public void setP3(boolean p3) {
+	}
+	public void setP4(boolean p4) {
+	}
+	public void setP5(boolean p5) {
+	}
+	public void setP6(boolean p6) {
+	}
+	public void setP7(boolean p7) {
+	}
+	public void setP8(boolean p8) {
+	}
+	public boolean Vempate() {
+		return false;
+	}
 		
 		
 	

@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import Model.Arquivo;
 import Model.Bispo;
 import Model.Cavalo;
 import Model.Dama;
@@ -49,6 +49,7 @@ public class Jogo extends JFrame {
 	JButton btnDesistirBranco = new JButton("Desistir");
 	JButton btnProporBranco = new JButton("Propor empate");
 	JButton btnProporPreto = new JButton("Propor empate");
+	Arquivo escritaderesultado = new Arquivo();
 	
 	
 	public Jogo(String Player1, String Player2) {
@@ -150,6 +151,7 @@ public class Jogo extends JFrame {
 				btnDesistirBranco.setEnabled(false);
 				btnProporBranco.setEnabled(false);
 				btnProporPreto.setEnabled(false);
+				escritaderesultado.Write("ListaDeJogadas.txt","Brancas Venceram por desistencia");
 				
 			}
 		});
@@ -162,7 +164,8 @@ public class Jogo extends JFrame {
 				btnDesistirBranco.setEnabled(false);
 				btnProporBranco.setEnabled(false);
 				btnProporPreto.setEnabled(false);
-				
+				escritaderesultado.Write("ListaDeJogadas.txt","Pretas Venceram por desistencia");
+
 			}
 		});
 		btnProporPreto.addMouseListener(new MouseAdapter() {

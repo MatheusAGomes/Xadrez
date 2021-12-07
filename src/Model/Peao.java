@@ -115,6 +115,11 @@ public class Peao extends Peca{
 		
 		
 	}
+	
+	@Override
+	public void resetarreiafogado() {
+		
+	}
 
 
 	
