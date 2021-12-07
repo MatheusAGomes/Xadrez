@@ -45,7 +45,7 @@ public class Arquivo {
 				if(!line.equals(BRANCAS)&&!line.equals(PRETAS)&&!line.equals(EMPATE)) {
 					char[] vetor = line.toCharArray();
 					br.close();
-					System.out.print(i);
+					//System.out.print(i);
 					return vetor;
 				}
 				else

@@ -112,6 +112,14 @@ public class TelaDeInicio extends JFrame {
 	
 		
 		JButton btnNewButton_1 = new JButton("Sair");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				System.exit(0);
+
+			}
+		});
 		btnNewButton_1.setBounds(105, 378, 269, 51);
 		contentPane.add(btnNewButton_1);
 		
