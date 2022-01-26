@@ -1,10 +1,9 @@
-Data: 7 / 12 / 2021
+Data: 26 / 1 / 2022
 PUC CAMPINAS CHAMPIONSHIP
 Matheus X Gomes
-0. 6343
-1. 1434
-2. 6444
-3.D0347
-4. 6545
-5.D4774
-Pretas Venceram
+0. 6444
+1. 1535
+2.D7337
+3.R0415
+4.D3715
+Brancas Venceram
